@@ -5,7 +5,21 @@ import { StickyScroll } from "../sticky-scroll-reveal";
 
 const content = [
   {
-    title: "About VITopia '23'",
+    title: "About VITopia '23",
+    subtitle: "VITOPIA",
+    description:
+      "VITOPIA is the annual international cultural and sports festival conducted by VIT-AP University, celebrating its endless enthusiasm for various sports and art forms. VITOPIA 2024 marks the fifth edition of this cultural and sports extravaganza, scheduled for February 24th and 25th, 2024. The sports event features 15+ indoor and outdoor games, while the cultural event includes over 20 prime cultural competitions.",
+    content: (
+      <Image
+        src="/vitopia-placeholder.webp"
+        alt="Collaborative Editing"
+        layout="fill"
+        objectFit="cover"
+      />
+    ),
+  },
+  {
+    title: "About VITopia '24",
     subtitle: "VITOPIA",
     description:
       "VITOPIA is the annual international cultural and sports festival conducted by VIT-AP University, celebrating its endless enthusiasm for various sports and art forms. VITOPIA 2024 marks the fifth edition of this cultural and sports extravaganza, scheduled for February 24th and 25th, 2024. The sports event features 15+ indoor and outdoor games, while the cultural event includes over 20 prime cultural competitions.",
@@ -34,7 +48,7 @@ const content = [
   },
 ];
 
-export function About() {
+export function AboutDesktop() {
   return (
     <div className="p-10 bg-black">
       <StickyScroll content={content} />

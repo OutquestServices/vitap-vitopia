@@ -47,7 +47,7 @@ const CountdownTimer = () => {
   });
 
   return (
-    <div className="flex justify-center md:justify-between items-center w-full bg-black p-5 md:p-10">
+    <div className="flex justify-center md:justify-between items-center w-full bg-black p-0 md:p-10">
       {timerComponents.length ? timerComponents : <span>Time&apos;s up!</span>}
     </div>
   );

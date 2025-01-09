@@ -30,12 +30,12 @@ export default function HeroSection() {
         <ShaderPlane />
       </Canvas>
       <div className="absolute top-0 flex flex-col items-center justify-center w-full h-full">
-        <div className="text-[60px] text-center text-white font-bold shadow-xl">
+        <div className="text-[24px] md:text-[40px] lg:text-[60px] text-center text-white font-bold shadow-xl">
           INTERNATIONAL SPORTS AND CULTURAL
           <br />
           FIESTA
         </div>
-        <div className="text-[30px] text-center text-white font-thin shadow-xl">
+        <div className="text-[16px] md:text-[20px] lg:text-[30px] text-center text-white font-thin shadow-xl">
           March 8<sup>th</sup> & 9<sup>th</sup>, 2025
         </div>
         <button className="mt-10 bg-white text-black font-bold text-lg px-10 py-3 rounded-full shadow-xl">

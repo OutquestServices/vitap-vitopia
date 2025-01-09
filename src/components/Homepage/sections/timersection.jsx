@@ -9,7 +9,7 @@ const TimerSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           {/* Text and button column */}
           <div className="lg:col-span-1">
-            <p className="text-3xl md:text-4xl lg:text-5xl font-bold">
+            <p className="text-[28px] md:text-4xl lg:text-5xl font-bold">
               NEXT GIG <br className="hidden md:block" /> STARTS IN
             </p>
             <div className="mt-4 lg:mt-8">
