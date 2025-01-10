@@ -31,3 +31,25 @@ body {
       scrollbar-width: none;  /* Firefox */
 }
 }
+
+.card-hover-effect {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 16rem; /* 64 units */
+  height: 24rem; /* 96 units */
+  padding: 1rem;
+  background-color: black;
+  border-radius: 0.5rem; /* Rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Thin white border */
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Subtle white shadow */
+  overflow: hidden;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card-hover-effect:hover {
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5); /* Golden shadow on hover */
+  transform: translateY(-8px); /* More noticeable lift effect */
+}
