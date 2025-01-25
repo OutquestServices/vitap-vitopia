@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <GoogleAnalytics gaId="G-8TC7T9HD2B" />
+      <GoogleAnalytics gaId="G-JQ20KKEJY2" />
       <body className={lexend.className}>{children}</body>
     </html>
   );
