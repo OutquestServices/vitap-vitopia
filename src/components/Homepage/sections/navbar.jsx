@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { FloatingDock } from "../floating-dock";
 import { Button } from "../moving-border";
 import {
   IconAddressBook,
@@ -10,11 +9,6 @@ import {
   IconPennant2,
   IconUser,
 } from "@tabler/icons-react";
-import {
-  IconCalendarEventFilled,
-  IconTicket,
-  IconUsers,
-} from "@tabler/icons-react/dist/esm/tabler-icons-react";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -62,11 +56,17 @@ export default function Navbar() {
         />
       </div>
       <div className=" relative w-auto items-center justify-center">
-        <FloatingDock items={items} />
+        <div className="w-[500px] h-[60px] rounded-full flex items-center justify-between bg-black px-10 font-bold">
+          {items.map((item, index) => (
+            <a className="text-white" href={item.href} key={index}>
+              {item.title}
+            </a>
+          ))}
+        </div>
       </div>
       <div className="relative w-[200px] h-[80px] hidden md:block">
-        <a href="/login">
-          <Button>Login</Button>
+        <a href="/sports">
+          <Button>Register Now</Button>
         </a>
       </div>
     </div>

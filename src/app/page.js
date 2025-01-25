@@ -2,7 +2,6 @@ import { AboutDesktop } from "@/components/Homepage/sections/aboutsectiondesktop
 import AboutMobile from "@/components/Homepage/sections/aboutsectionmobile";
 import CardSection from "@/components/Homepage/sections/cardsection";
 import { Footer } from "@/components/Homepage/sections/footer";
-import HeroSection from "@/components/Homepage/sections/herosection";
 import HeroSection1 from "@/components/Homepage/sections/herosection1";
 import Images from "@/components/Homepage/sections/imagessection";
 import Navbar from "@/components/Homepage/sections/navbar";
