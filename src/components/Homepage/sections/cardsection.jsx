@@ -3,44 +3,44 @@ import { MeteorCard } from "../meteorcard";
 export default function CardSection() {
   const data = [
     {
-      name: "Hanumankid",
-      role: "Rap Artist",
-      image: "/dawgs.jpg",
+      name: "Jonita Gandhi",
+      role: "Canadian singer",
+      image: "/last_lineup/jonitha.avif",
     },
     {
-      name: "Hanumankid",
-      role: "Rap Artist",
-      image: "/dawgs.jpg",
+      name: "Salim-Sulaiman",
+      role: "Duo",
+      image: "/last_lineup/salim_suleman.avif",
     },
     {
-      name: "Hanumankid",
-      role: "Rap Artist",
-      image: "/dawgs.jpg",
+      name: "Progressive Bros",
+      role: "Electronic Indian music producer",
+      image: "/last_lineup/progressive.avif",
     },
     {
-      name: "Hanumankid",
-      role: "Rap Artist",
-      image: "/dawgs.jpg",
+      name: "Dj Nucleya",
+      role: "DJ",
+      image: "/last_lineup/dj_nucleya.avif",
     },
     {
-      name: "Hanumankid",
-      role: "Rap Artist",
-      image: "/dawgs.jpg",
+      name: "Jammers Band",
+      role: "Musical Band",
+      image: "/last_lineup/jammers_band.avif",
     },
     {
-      name: "Hanumankid",
-      role: "Rap Artist",
-      image: "/dawgs.jpg",
+      name: "Devi Sri Prasad",
+      role: "Singer",
+      image: "/last_lineup/dsp.avif",
     },
     {
-      name: "Hanumankid",
-      role: "Rap Artist",
-      image: "/dawgs.jpg",
+      name: "Thaman",
+      role: "Singer",
+      image: "/last_lineup/thamman.avif",
     },
     {
-      name: "Hanumankid",
-      role: "Rap Artist",
-      image: "/dawgs.jpg",
+      name: "Lavanya Tripathi",
+      role: "Actress",
+      image: "/last_lineup/lavanya.avif",
     },
   ];
   return (

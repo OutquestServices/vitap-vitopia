@@ -32,32 +32,6 @@ export default function AboutMobile() {
       <div className="w-fit h-max bg-black lg:px-[108px] px-[20px] lg:py-[83px] py-[20px] relative flex items-center justify-center flex-col">
         <div className="w-80 h-60 relative">
           <Image
-            src={"/vitopia-placeholder.webp"}
-            fill
-            alt="VITOPIA"
-            className="rounded-md"
-          />
-        </div>
-        <div className="w-full h-full relative flex flex-col items-center gap-2 pb-6">
-          <h2 className="text-[24px] text-white text-center font-Emilio font-bold">
-            VITOPIA
-          </h2>
-          <h1 className="text-white font-Montserrat text-[18px] text-center">
-            About VITopia '23
-          </h1>
-        </div>
-        <p className="text-white font-Montserrat text-[14px] text-center">
-          VITOPIA is the annual international cultural and sports festival
-          conducted by VIT-AP University, celebrating its endless enthusiasm for
-          various sports and art forms. VITOPIA 2024 marks the fifth edition of
-          this cultural and sports extravaganza, scheduled for February 24th and
-          25th, 2024. The sports event features 15+ indoor and outdoor games,
-          while the cultural event includes over 20 prime cultural competitions.
-        </p>
-      </div>
-      <div className="w-fit h-max bg-black lg:px-[108px] px-[20px] lg:py-[83px] py-[20px] relative flex items-center justify-center flex-col">
-        <div className="w-80 h-60 relative">
-          <Image
             src={"/vitap_drone.webp"}
             fill
             alt="VITOPIA"

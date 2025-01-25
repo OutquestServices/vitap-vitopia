@@ -5,24 +5,10 @@ import { StickyScroll } from "../sticky-scroll-reveal";
 
 const content = [
   {
-    title: "About VITopia '23",
-    subtitle: "VITOPIA",
-    description:
-      "VITOPIA is the annual international cultural and sports festival conducted by VIT-AP University, celebrating its endless enthusiasm for various sports and art forms. VITOPIA 2024 marks the fifth edition of this cultural and sports extravaganza, scheduled for February 24th and 25th, 2024. The sports event features 15+ indoor and outdoor games, while the cultural event includes over 20 prime cultural competitions.",
-    content: (
-      <Image
-        src="/vitopia-placeholder.webp"
-        alt="Collaborative Editing"
-        layout="fill"
-        objectFit="cover"
-      />
-    ),
-  },
-  {
     title: "About VITopia '24",
     subtitle: "VITOPIA",
     description:
-      "VITOPIA is the annual international cultural and sports festival conducted by VIT-AP University, celebrating its endless enthusiasm for various sports and art forms. VITOPIA 2024 marks the fifth edition of this cultural and sports extravaganza, scheduled for February 24th and 25th, 2024. The sports event features 15+ indoor and outdoor games, while the cultural event includes over 20 prime cultural competitions.",
+      "VITopia 2024 showcased a stellar lineup, including Jonita Gandhi, a versatile Indian singer, and the acclaimed music duo Salim–Sulaiman. The festival featured energetic performances from the Progressive Brothers, a popular DJ duo, and the engaging Jammers Band. Thaikkudam Bridge, known for their fusion music, and Nucleya, a leading DJ with a unique sound, also lit up the stage, ensuring an unforgettable experience.",
     content: (
       <Image
         src="/vitopia-placeholder.webp"

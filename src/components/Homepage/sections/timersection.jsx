@@ -14,10 +14,10 @@ const TimerSection = () => {
             </p>
             <div className="mt-4 lg:mt-8">
               <Link
-                href="https://vtbif.org/"
-                className="inline-flex items-center px-6 py-3 bg-white text-black text-sm md:text-base lg:text-lg font-semibold rounded hover:bg-gray-100 hover:text-black transition duration-300"
+                href="#"
+                className="inline-flex items-center px-6 py-3 bg-[#FF8321] text-black text-sm md:text-base lg:text-lg font-semibold rounded hover:bg-gray-100 hover:text-black transition duration-300"
               >
-                Know More <MdArrowOutward className="ml-2" />
+                Register Now <MdArrowOutward className="ml-2" />
               </Link>
             </div>
           </div>
