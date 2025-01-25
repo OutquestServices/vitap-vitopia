@@ -24,7 +24,7 @@ function SportsList() {
         {
             id: 2,
             name: "Badminton Women - Singles",
-            image: "/sports/badminton_women.avif",
+            image: "/sports/badminton.avif",
             description: "Beautiful beach with crystal clear waters.",
             tags: ["relaxation", "scuba", "sunset", "family"]
         },
@@ -38,7 +38,7 @@ function SportsList() {
         {
             id: 4,
             name: "Badminton Women - Doubles",
-            image: "/sports/badminton_women.avif",
+            image: "/sports/badminton.avif",
             description: "Beautiful beach with crystal clear waters.",
             tags: ["relaxation", "scuba", "sunset", "family"]
         },

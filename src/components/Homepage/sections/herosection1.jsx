@@ -8,16 +8,16 @@ export default function HeroSection1() {
                 <div className="w-[100px] h-[100px] md:w-[350px] md:h-[300px] lg:w-[500px] lg:h-[280px] relative top-8">
                     <Image src={"/orange_logo.svg"} alt="Ortopia Logo" layout="fill" objectFit="contain" className="hidden md:block"/>
                 </div>
-                <div className="text-[24px] md:text-[48px] lg:text-[64px] testFont text-white text-start font-extrabold shadow-xl ">
+                <div className="text-[24px] md:text-[48px] lg:text-[56px] testFont text-white text-start font-extrabold shadow-xl ">
                     INTERNATIONAL <br /> SPORTS & <br />CULTURAL FEST
                 </div>
                 <div className="flex md:flex-row flex-col gap-4 md:space-x-4 md:mt-8 items-start justify-start w-full h-full">
-                    <button className="testFont border-2 text-white font-semibold text-sm md:font-semibold md:text-lg px-5 py-1 md:px-10 md:py-3 shadow-lg">
+                    <a href="/sports" target="_blank" className="testFont border-2 text-white font-semibold text-sm md:font-semibold md:text-lg px-5 py-1 md:px-10 md:py-3 shadow-lg">
                         Register Now
-                    </button>
-                    <button className="testFont bg-[#FF8321] text-black font-semibold text-sm md:font-bold md:text-lg px-6 py-1 md:px-12 md:py-3 shadow-lg">
+                    </a>
+                    <a href="/sports" target="_blank" className="testFont bg-[#FF8321] text-black font-semibold text-sm md:font-bold md:text-lg px-6 py-1 md:px-12 md:py-3 shadow-lg">
                         Grab Tickets
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

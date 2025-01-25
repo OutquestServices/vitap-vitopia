@@ -5,12 +5,12 @@ export default function Images() {
     {
       Image: {
         data: [
-          { attributes: { url: "/homepage_images/image_1.jpeg" } },
-          { attributes: { url: "/homepage_images/image_2.jpeg" } },
-          { attributes: { url: "/homepage_images/image_3.jpeg" } },
-          { attributes: { url: "/homepage_images/image_4.jpeg" } },
-          { attributes: { url: "/homepage_images/image_5.jpeg" } },
-          { attributes: { url: "/homepage_images/image_6.jpeg" } },
+          { attributes: { url: "/sports/football.avif" } },
+          { attributes: { url: "/sports/chess.avif" } },
+          { attributes: { url: "/sports/cricket.avif" } },
+          { attributes: { url: "/sports/volleyball.avif" } },
+          { attributes: { url: "/sports/throwball.avif" } },
+          { attributes: { url: "/sports/karate.avif" } },
         ],
       },
     },

@@ -28,13 +28,13 @@ export default function Navbar() {
     {
       title: "Sports",
       icon: <IconPennant2 color="white" />,
-      href: "#",
+      href: "/sports",
     },
-    {
-      title: "Culturals",
-      icon: <IconTicket color="white" />,
-      href: "/culturals",
-    },
+    // {
+    //   title: "Culturals",
+    //   icon: <IconTicket color="white" />,
+    //   href: "/culturals",
+    // },
     {
       title: "About",
       icon: <IconUser color="white" />,
@@ -45,11 +45,11 @@ export default function Navbar() {
       icon: <IconAddressBook color="white" />,
       href: "/contact",
     },
-    {
-      title: "Shop",
-      icon: <IconBuildingStore color="white" />,
-      href: "/shop",
-    },
+    // {
+    //   title: "Shop",
+    //   icon: <IconBuildingStore color="white" />,
+    //   href: "/shop",
+    // },
   ];
   return (
     <div className="absolute z-30 w-full flex items-center justify-between px-6 pt-6 md:pt-12">
