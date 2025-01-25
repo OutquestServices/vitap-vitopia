@@ -28,10 +28,10 @@ export function Footer() {
         <div className="relative text-white flex flex-col gap-2">
           <h3 className="text-lg font-bold">Quick Links</h3>
           <a href="/sports">Sports</a>
-          <a href="/culturals">Culturals</a>
+          {/* <a href="/culturals">Culturals</a> */}
           <a href="/about">About</a>
-          <a href="/login">Registration</a>
-          <a href="/shop">Shop</a>
+          {/* <a href="/login">Registration</a> */}
+          {/* <a href="/shop">Shop</a> */}
         </div>
 
         {/* Contact and Social Information */}
@@ -41,8 +41,9 @@ export function Footer() {
           <a href="emailto:convenor.vitopia@vitap.ac.in">
             convenor.vitopia@vitap.ac.in
           </a>
-          <p>Technical: </p>
-          <a href="emailto:">xxxxxxxxxxx@gmail.com</a>
+          <p>Technical & Event Related: </p>
+          <a href="emailto:vardhan.21bcb7144@vitapstudent.ac.in">vardhan.21bcb7144@vitapstudent.ac.in</a>
+          <a href="emailto:akshay.allenki@outquest.in">akshay.allenki@outquest.in</a>
           <p>Address: VIT-AP University, Amaravati</p>
         </div>
 
@@ -53,7 +54,7 @@ export function Footer() {
             Instagram
           </a>
           <a
-            href="https://www.facebook.com/p/Vitopia-VITAP-University-100068960391867/"
+            href="https://www.facebook.com/vitap.university/"
             target="_blank"
           >
             Facebook
@@ -62,7 +63,7 @@ export function Footer() {
             Twitter
           </a>
           <a
-            href="https://www.linkedin.com/company/vitopia-vitap/"
+            href="https://www.linkedin.com/school/vitap-university/"
             target="_blank"
           >
             LinkedIn
@@ -74,13 +75,13 @@ export function Footer() {
             <IconBrandInstagram size={24} />
           </a>
           <a
-            href="https://www.facebook.com/p/Vitopia-VITAP-University-100068960391867/"
+            href="https://www.facebook.com/vitap.university/"
             target="_blank"
           >
             <IconBrandMeta size={24} />
           </a>
           <a
-            href="https://www.linkedin.com/company/vitopia-vitap/"
+            href="https://www.linkedin.com/school/vitap-university/"
             target="_blank"
           >
             <IconBrandLinkedin size={24} />

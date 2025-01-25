@@ -33,7 +33,7 @@ export default function Navbar() {
     {
       title: "About",
       icon: <IconUser color="white" />,
-      href: "#",
+      href: "/about",
     },
     {
       title: "Contact",
@@ -48,21 +48,23 @@ export default function Navbar() {
   ];
   return (
     <div className="absolute z-30 w-full flex items-center justify-between px-6 pt-6 md:pt-12">
-      <div className="relative w-[120px] h-[60px] md:w-[200px] md:h-[80px]">
-        <Image
-          src="/logo.svg"
-          layout="fill"
-          objectFit="contain"
-          alt="VT App Logo"
-        />
-      </div>
-      <div className="hidden md:block relative w-auto items-center justify-center">
-        <div className="w-[500px] h-[60px] rounded-full flex items-center justify-between bg-black px-10 font-bold">
-          {items.map((item, index) => (
-            <a className="text-white" href={item.href} key={index}>
-              {item.title}
-            </a>
-          ))}
+      <div className="flex">
+        <div className="relative w-[120px] h-[60px] md:w-[200px] md:h-[80px]">
+          <Image
+            src="/logo.svg"
+            layout="fill"
+            objectFit="contain"
+            alt="VT App Logo"
+          />
+        </div>
+        <div className="hidden md:block relative w-auto items-center justify-center top-4">
+          <div className="w-[500px] h-[60px] rounded-full flex items-center justify-between bg-black px-10 font-bold">
+            {items.map((item, index) => (
+              <a className="text-white" href={item.href} key={index}>
+                {item.title}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
       <FloatingDockMobile items={items} />
@@ -89,7 +91,7 @@ const FloatingDockMobile = ({ items, className }) => {
                 {item.title}
               </a>
             ))}
-            <a href="/tickets" className="block p-4">
+            <a href="/sports" className="block p-4">
               Grab Tickets
             </a>
           </div>
