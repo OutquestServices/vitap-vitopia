@@ -3,9 +3,9 @@ import { FaEnvelope, FaUserTie, FaPhone } from 'react-icons/fa';
 
 export default function Contact() {
     const coordinators = [
-        { name: "Dr. M. Krishna Swamy", position: "Convenor", email: "convenor.vitopia@vitap.ac.in", phone: "+91 xxxxx xxxxx" },
+        { name: "Dr. M. Krishna Swamy", position: "Convenor", email: "convenor.vitopia@vitap.ac.in", phone: "+91 94112 68423" },
         { name: "Dr. Karishma Bisht", position: "Co Convenor", email: "xxxxxxxxxxxxx@vitap.ac.in", phone: "+91 xxxxx xxxxx" },
-        { name: "Dr. U M Gopala Krishna ", position: "Co Convenor", email: "xxxxxxxxxxxxx@vitap.ac.in", phone: "+91 xxxxx xxxxx" },
+        { name: "Dr. U M Gopala Krishna ", position: "Co Convenor", email: "xxxxxxxxxxxxx@vitap.ac.in", phone: "+91 81421 77143" },
     ];
 
     return (
