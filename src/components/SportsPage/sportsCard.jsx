@@ -1,5 +1,5 @@
 'use client'
-import { IconHeart } from '@tabler/icons-react';
+import { IconExternalLink, IconHeart } from '@tabler/icons-react';
 import { useState } from 'react';
 
 function SportsCard({ beach }) {
@@ -21,10 +21,10 @@ function SportsCard({ beach }) {
             </div>
             <div className="px-6 py-4 flex items-center justify-between">
                 <button className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded w-[80%]">
-                    Show details
+                    Register Now
                 </button>
                 <button onClick={() => setLiked(!liked)} className={`transition ease-in duration-300 ${liked ? 'text-red-500' : 'text-gray-500'}`}>
-                    <IconHeart className="h-6 w-6" />
+                    <IconExternalLink className="h-6 w-6" />
                 </button>
             </div>
         </div>
