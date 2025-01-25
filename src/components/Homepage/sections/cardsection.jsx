@@ -14,7 +14,7 @@ export default function CardSection() {
     },
     {
       name: "Progressive Bros",
-      role: "Electronic Indian music producer",
+      role: "Electronic Duo",
       image: "/last_lineup/progressive.avif",
     },
     {
@@ -28,19 +28,19 @@ export default function CardSection() {
       image: "/last_lineup/jammers_band.avif",
     },
     {
-      name: "Devi Sri Prasad",
-      role: "Singer",
-      image: "/last_lineup/dsp.avif",
+      name: "PRITHVI SAI",
+      role: "Musical artist",
+      image: "/last_lineup/prithvi.avif",
     },
     {
-      name: "Thaman",
-      role: "Singer",
-      image: "/last_lineup/thamman.avif",
+      name: "Thaikkudam Bridge",
+      role: "Musical Band",
+      image: "/last_lineup/taikkudum.avif",
     },
     {
-      name: "Lavanya Tripathi",
-      role: "Actress",
-      image: "/last_lineup/lavanya.avif",
+      name: "Samay Raina",
+      role: "Comedian",
+      image: "/last_lineup/samay.webp",
     },
   ];
   return (

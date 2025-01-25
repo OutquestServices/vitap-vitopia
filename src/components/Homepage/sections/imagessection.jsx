@@ -11,6 +11,7 @@ export default function Images() {
           { attributes: { url: "/sports/volleyball.avif" } },
           { attributes: { url: "/sports/throwball.avif" } },
           { attributes: { url: "/sports/karate.avif" } },
+          { attributes: { url: "/sports/powerlifting.avif" } },
         ],
       },
     },
@@ -19,13 +20,13 @@ export default function Images() {
   return (
     <div className="bg-black text-white w-full h-full py-4 md:py-6 lg:py-10">
       <div className="overflow-hidden">
-        <div className="lg:grid-cols-6 hidden lg:grid">
-          {imageStrapi[0].Image.data.slice(0, 6).map((item, index) => (
+        <div className="lg:grid-cols-7 hidden lg:grid">
+          {imageStrapi[0].Image.data.slice(0, 7).map((item, index) => (
             <div key={index} className="w-full h-24 md:h-44 lg:h-80 relative">
               <Image
                 src={item.attributes.url}
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain"
                 alt="Displayed image"
               />
             </div>
@@ -37,7 +38,7 @@ export default function Images() {
               <Image
                 src={item.attributes.url}
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain"
                 alt="Displayed image"
               />
             </div>
@@ -49,7 +50,7 @@ export default function Images() {
               <Image
                 src={item.attributes.url}
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain"
                 alt="Displayed image"
               />
             </div>
