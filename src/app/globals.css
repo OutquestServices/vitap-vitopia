@@ -50,6 +50,6 @@ body {
 }
 
 .card-hover-effect:hover {
-  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5); /* Golden shadow on hover */
+  box-shadow: 0 8px 30px #FF8321; /* Golden shadow on hover */
   transform: translateY(-8px); /* More noticeable lift effect */
 }

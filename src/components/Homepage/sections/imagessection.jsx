@@ -5,14 +5,12 @@ export default function Images() {
     {
       Image: {
         data: [
-          { attributes: { url: "/about.png" } },
-          { attributes: { url: "/about.png" } },
-          { attributes: { url: "/about.png" } },
-          { attributes: { url: "/about.png" } },
-          { attributes: { url: "/about.png" } },
-          { attributes: { url: "/about.png" } },
-          { attributes: { url: "/about.png" } },
-          { attributes: { url: "/about.png" } },
+          { attributes: { url: "/homepage_images/image_1.jpeg" } },
+          { attributes: { url: "/homepage_images/image_2.jpeg" } },
+          { attributes: { url: "/homepage_images/image_3.jpeg" } },
+          { attributes: { url: "/homepage_images/image_4.jpeg" } },
+          { attributes: { url: "/homepage_images/image_5.jpeg" } },
+          { attributes: { url: "/homepage_images/image_6.jpeg" } },
         ],
       },
     },
