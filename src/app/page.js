@@ -13,8 +13,8 @@ export default function Page() {
     <div className="bg-black">
       <Navbar />
       <HeroSection1 />
-      <TimerSection />
       <Images />
+      <TimerSection />
       <div className="hidden lg:block">
         <AboutDesktop />
       </div>

@@ -9,13 +9,14 @@ const TimerSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           {/* Text and button column */}
           <div className="lg:col-span-1">
-            <p className="text-[28px] md:text-4xl lg:text-5xl font-bold">
-              NEXT GIG <br className="hidden md:block" /> STARTS IN
+            <p className="text-[28px] md:text-3xl lg:text-[44px] leading-10 font-bold testFont">
+              SPORTS EVENTS <br className="hidden md:block" /> STARTS IN
             </p>
             <div className="mt-4 lg:mt-8">
               <Link
-                href="#"
-                className="inline-flex items-center px-6 py-3 bg-[#FF8321] text-black text-sm md:text-base lg:text-lg font-semibold rounded hover:bg-gray-100 hover:text-black transition duration-300"
+                href="/sports"
+                target="_blank"
+                className="testFont inline-flex items-center px-6 py-3 bg-[#FF8321] text-black text-sm md:text-base lg:text-lg font-semibold rounded hover:bg-gray-100 hover:text-black transition duration-300"
               >
                 Register Now <MdArrowOutward className="ml-2" />
               </Link>
