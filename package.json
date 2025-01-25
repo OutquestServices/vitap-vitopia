@@ -10,6 +10,7 @@
     "pages:build": "npx @cloudflare/next-on-pages"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@react-three/drei": "^9.120.6",
     "@react-three/fiber": "^8.17.12",
     "@tabler/icons-react": "^3.28.1",
