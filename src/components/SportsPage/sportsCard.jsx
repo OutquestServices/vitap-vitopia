@@ -3,8 +3,6 @@ import { IconExternalLink, IconHeart } from '@tabler/icons-react';
 import { useState } from 'react';
 
 function SportsCard({ beach }) {
-    const [liked, setLiked] = useState(false);
-
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg bg-gray-800 my-4">
             <img className="w-full" src={beach.imageLink} alt={beach.name} />
@@ -29,9 +27,13 @@ function SportsCard({ beach }) {
                 <a className="bg-blue-600 hover:bg-blue-800 text-white text-center font-bold py-2 px-4 rounded w-[80%]" href={beach.link} target='_blank'>
                     Register Now
                 </a>
-                <button onClick={() => setLiked(!liked)} className={`transition ease-in duration-300 ${liked ? 'text-red-500' : 'text-gray-500'}`}>
+                <a href={'https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Final_Rules+%26+Regulations_28jan.pdf'}
+                    target='_blank'
+                    className="transition ease-in duration-300 text-gray-500"
+                    title="Rules and Regulations">
                     <IconExternalLink className="h-6 w-6" />
-                </button>
+                </a>
+
             </div>
         </div>
     );
