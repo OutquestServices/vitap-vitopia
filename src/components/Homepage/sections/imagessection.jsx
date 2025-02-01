@@ -5,13 +5,13 @@ export default function Images() {
     {
       Image: {
         data: [
-          { attributes: { url: "/sports/football.avif" } },
-          { attributes: { url: "/sports/chess.avif" } },
-          { attributes: { url: "/sports/cricket.avif" } },
-          { attributes: { url: "/sports/volleyball.avif" } },
-          { attributes: { url: "/sports/throwball.avif" } },
-          { attributes: { url: "/sports/karate.avif" } },
-          { attributes: { url: "/sports/powerlifting.avif" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+POWERLIFTING.png" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+KARATE+2.png" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+FOOTBALL.png" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+CRICKET.png" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+kabaddi.png" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+CHESS.png" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+TRIPLE+JUMP.png" } },
         ],
       },
     },
