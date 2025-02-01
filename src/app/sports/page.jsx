@@ -42,13 +42,7 @@ function SportsList() {
                     <p className="text-3xl font-bold text-white py-4">Note:</p>
                     <ul className="space-y-3 text-white">
                         <motion.li whileHover={{ x: 10 }} className="flex items-center">
-                            The sports registration price encompasses one day's meals, including dinner. For extra days, players are required to pay Rs. 100 per day for each individual for food.
-                        </motion.li>
-                        <motion.li whileHover={{ x: 10 }} className="flex items-center">
-                            Local transport (pick-up and drop) from Vijayawada Railway station and bus stand will be available for those living far away.
-                        </motion.li>
-                        <motion.li whileHover={{ x: 10 }} className="flex items-center">
-                            Only participants and coaches/managers residing more than 50 km from the VIT-AP University campus will receive complimentary lodgings on their competition days.
+                            All sports playing days include free lodging (50 km away) and food.
                         </motion.li>
                     </ul>
                 </motion.div>
