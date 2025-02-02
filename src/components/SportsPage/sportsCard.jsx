@@ -15,7 +15,7 @@ function SportsCard({ beach }) {
             <div className="px-6 pt-4 pb-2">
                 {beach.endPrice === beach.startPrice ? (
                     <span className='text-white'>
-                        ₹ {beach.startPrice}
+                        ₹ {beach.startPrice} per player
                     </span>
                 ) : (
                     <span className='text-white'>
