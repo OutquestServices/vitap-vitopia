@@ -41,9 +41,9 @@ export function Footer() {
           <a href="emailto:convenor.vitopia@vitap.ac.in">
             convenor.vitopia@vitap.ac.in
           </a>
-          <p>Technical & Event Related: </p>
-          <a href="emailto:vardhan.21bcb7144@vitapstudent.ac.in">vardhan.21bcb7144@vitapstudent.ac.in</a>
-          <a href="emailto:akshay.allenki@outquest.in">akshay.22bce9221@vitapstudent.ac.in</a>
+          <p>Technical,Registration & Payment Related: </p>
+          {/* <a href="emailto:vardhan.21bcb7144@vitapstudent.ac.in">vardhan.21bcb7144@vitapstudent.ac.in</a> */}
+          <a href="emailto:akshay.22bce9221@vitapstudent.ac.in">akshay.22bce9221@vitapstudent.ac.in</a>
           <p>Address: VIT-AP University, Amaravati</p>
         </div>
 
