@@ -33,7 +33,7 @@ function SportsList() {
     return (
         <div className="bg-black min-h-screen flex flex-col items-center relative">
             <Navbar />
-            <div className="pt-44 px-40 text-xl w-full">
+            <div className="pt-44 px-16 sm:px-24 md:px-32 lg:px-40 text-xl w-full">
                 <ul className="space-y-3 text-white">
                     <motion.li whileHover={{ x: 10 }} className="flex items-center">
                         • All sports playing days include free lodging (50 km away) and food.
