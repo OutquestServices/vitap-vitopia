@@ -1,6 +1,7 @@
 import { Lexend } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Providers from "@/components/provider";
 
 const lexend = Lexend({ subsets: ["latin"] });
 
@@ -13,7 +14,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <GoogleAnalytics gaId="G-JQ20KKEJY2" />
-      <body className={lexend.className}>{children}</body>
+      <body className={lexend.className}>
+        <Providers>{children}</Providers></body>
     </html>
   );
 }

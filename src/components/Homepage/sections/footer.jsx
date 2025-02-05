@@ -9,6 +9,7 @@ import {
   IconBrandMeta,
   IconBrandX,
 } from "@tabler/icons-react";
+import { signIn } from "next-auth/react";
 
 export function Footer() {
   return (
@@ -30,6 +31,14 @@ export function Footer() {
           <a href="/sports">Sports</a>
           {/* <a href="/culturals">Culturals</a> */}
           <a href="/about">About</a>
+          <button
+            onClick={() =>
+              signIn("google", { callbackUrl: "/auth/role-bridge" })
+            }
+            className="cursor-pointer underline bg-transparent border-none text-left"
+          >
+            Dashboard
+          </button>
           {/* <a href="/login">Registration</a> */}
           {/* <a href="/shop">Shop</a> */}
         </div>
