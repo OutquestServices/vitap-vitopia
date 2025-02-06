@@ -12,8 +12,11 @@ import {
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence } from "framer-motion";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
+  const { data: session, status } = useSession();
+
   const items = [
     {
       title: "Home",
@@ -64,10 +67,17 @@ export default function Navbar() {
                 {item.title}
               </a>
             ))}
+            {status === "authenticated" ? (
+              <button onClick={() =>
+                signOut({ callbackUrl: "/" })
+              } className="text-white">
+                Sign Out
+              </button>
+            ) : null}
           </div>
         </div>
       </div>
-      <FloatingDockMobile items={items} />
+      <FloatingDockMobile items={items} status={status} />
       <div className="relative w-[200px] h-[80px] hidden md:block">
         <a href="/sports">
           <Button>Register Now</Button>
@@ -79,7 +89,7 @@ export default function Navbar() {
 
 
 
-const FloatingDockMobile = ({ items, className }) => {
+const FloatingDockMobile = ({ items, className, status }) => {
   const [open, setOpen] = useState(false);
   return (
     <div className={cn("relative block md:hidden", className)}>
@@ -94,6 +104,13 @@ const FloatingDockMobile = ({ items, className }) => {
             <a href="/sports" className="block p-4">
               Grab Tickets
             </a>
+            {status === "authenticated" ? (
+              <button onClick={() =>
+                signOut({ callbackUrl: "/" })
+              } className="block p-4">
+                Sign Out
+              </button>
+            ) : null}
           </div>
         )}
       </AnimatePresence>

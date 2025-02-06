@@ -2,8 +2,11 @@
 // Force the Node.js runtime so that libraries like oidc-token-hash work properly.
 export const runtime = "nodejs";
 
+import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+
+const prisma = new PrismaClient();
 
 const authOptions = {
     providers: [
@@ -24,12 +27,38 @@ const authOptions = {
         async jwt({ token, user }) {
             if (user) {
                 const userEmail = user.email;
-                if (userEmail === "akshay.22bce9221@vitapstudent.ac.in") {
+
+                const existingUser = await prisma.users.findUnique({
+                    where: { email: userEmail },
+                });
+
+                if (existingUser) {
                     token.role = "admin";
-                    token.club = "test";
+                    token.event = existingUser.event;
+
+                    await prisma.loginHistory.create({
+                        data: {
+                            googleId: user.id,
+                            email: user.email,
+                            event: existingUser.event,
+                            role: "admin",
+                            name: user.name,
+                            image: user.image,
+                        },
+                    });
                 } else {
                     token.role = "user";
-                    token.club = null;
+                    token.event = null;
+
+                    await prisma.loginHistory.create({
+                        data: {
+                            googleId: user.id,
+                            email: user.email,
+                            role: "user",
+                            name: user.name,
+                            image: user.image,
+                        },
+                    });
                 }
             }
             return token;
@@ -38,7 +67,7 @@ const authOptions = {
         async session({ session, token }) {
             if (session?.user) {
                 session.user.role = token.role;
-                session.user.club = token.club;
+                session.user.event = token.event;
             }
             return session;
         },

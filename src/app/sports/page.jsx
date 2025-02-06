@@ -13,7 +13,12 @@ function SportsList() {
     useEffect(() => {
         setIsLoading(true);
         const fetchData = async () => {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/fetch/sports`);
+            const response = await fetch(`/api/fetch/sports`, {
+                headers: {
+                    'Authorization': `Bearer ${process.env.NEXT_API_TOKEN}`,
+                    'Content-Type': 'application/json'
+                }
+            });
             const data = await response.json();
 
             setData(data.events);
