@@ -7,13 +7,13 @@ export default function UploadImage() {
         eventId: "",
         regNo: "",
         name: "",
-        department: "", 
+        department: "",
         instructorImage: null,
     });
     const [previewImage, setPreviewImage] = useState(null);
     const [statusMessage, setStatusMessage] = useState("");
 
-    const departments = ["Food", "Accomdation", "Transport", "Help Desk", "Registrations", "Discipline","Documentation","First Aid"]; 
+    const departments = ["Food", "Accomdation", "Transport", "Help Desk", "Registrations", "Discipline", "Documentation", "First Aid", "Design", "Technical"];
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -56,7 +56,7 @@ export default function UploadImage() {
                     eventId: formData.eventId,
                     regNo: formData.regNo,
                     name: formData.name,
-                    department: formData.department, 
+                    department: formData.department,
                     image,
                 }),
             });
