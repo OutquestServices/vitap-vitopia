@@ -69,3 +69,11 @@ model sportsRegistration {
   coachName      String?
   coachMobile    String?
 }
+
+model Posters {
+  id        Int      @id @default(autoincrement())
+  eventId   String   @unique
+  image     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
