@@ -131,6 +131,69 @@
 
 // export default TournamentBracket;
 
+// "use client";
+
+// import { useState } from "react";
+
+// const CricketTournamentTree = () => {
+//   const [matches] = useState([
+//     {
+//       round: "Round of 16",
+//       teams: ["India", "Australia", "Pakistan", "South Africa", "England", "New Zealand", "Sri Lanka", "West Indies"],
+//       winners: ["India", "Pakistan", "England", "Sri Lanka"],
+//       byes: [false, false, false, false, true, false, true, false],
+//     },
+//     {
+//       round: "Quarter Finals",
+//       teams: ["India", "Pakistan", "England", "Sri Lanka"],
+//       winners: ["India", "England"],
+//       byes: [false, false, false, false],
+//     },
+//     {
+//       round: "Semi Finals",
+//       teams: ["India", "England"],
+//       winners: ["India"],
+//       byes: [false, false],
+//     },
+//     {
+//       round: "Final",
+//       teams: ["India"],
+//       winners: ["India"],
+//       byes: [],
+//     },
+//   ]);
+
+//   return (
+//     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-6">
+//       <div className="w-full max-w-6xl">
+//         <h2 className="text-3xl font-bold text-center mb-8">🏏 Cricket Tournament Bracket</h2>
+//         <div className="grid grid-cols-4 gap-16">
+//           {matches.map((round, roundIndex) => (
+//             <div key={roundIndex} className="flex flex-col items-center relative">
+//               <h3 className="text-lg font-semibold mb-4">{round.round}</h3>
+//               <div className="relative flex flex-col items-center">
+//                 {round.teams.map((team, idx) => {
+//                   const isWinner = round.winners.includes(team);
+//                   const isBye = round.byes[idx];
+//                   return (
+//                     <div key={idx} className="relative flex items-center">
+//                       <div className={`shadow-lg p-4 rounded-lg w-40 text-center mb-8 ${isWinner ? 'bg-green-300' : 'bg-red-300'}`}>
+//                         <p className="font-bold">{team}</p>
+//                         {isBye && <p className="text-sm text-gray-500">(BYE)</p>}
+//                       </div>
+//                     </div>
+//                   );
+//                 })}
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default CricketTournamentTree;
 "use client";
 
 import { useState } from "react";
@@ -139,27 +202,34 @@ const CricketTournamentTree = () => {
   const [matches] = useState([
     {
       round: "Round of 16",
-      teams: ["India", "Australia", "Pakistan", "South Africa", "England", "New Zealand", "Sri Lanka", "West Indies"],
-      winners: ["India", "Pakistan", "England", "Sri Lanka"],
-      byes: [false, false, false, false, true, false, true, false],
+      fixtures: [
+        { teams: ["India", "Australia"], winner: "India" },
+        { teams: ["Pakistan", "South Africa"], winner: "Pakistan" },
+        { teams: ["England", "New Zealand"], winner: "England" },
+        { teams: ["Sri Lanka", "West Indies"], winner: "Sri Lanka" },
+        { teams: ["Bangladesh"], winner: "Bangladesh", bye: true },
+      ],
     },
     {
       round: "Quarter Finals",
-      teams: ["India", "Pakistan", "England", "Sri Lanka"],
-      winners: ["India", "England"],
-      byes: [false, false, false, false],
+      fixtures: [
+        { teams: ["India", "Pakistan"], winner: "India" },
+        { teams: ["England", "Sri Lanka"], winner: "England" },
+        { teams: ["Bangladesh"], winner: "Bangladesh", bye: true },
+      ],
     },
     {
       round: "Semi Finals",
-      teams: ["India", "England"],
-      winners: ["India"],
-      byes: [false, false],
+      fixtures: [
+        { teams: ["India", "England"], winner: "India" },
+        { teams: ["Bangladesh"], winner: "Bangladesh", bye: true },
+      ],
     },
     {
       round: "Final",
-      teams: ["India"],
-      winners: ["India"],
-      byes: [],
+      fixtures: [
+        { teams: ["India", "Bangladesh"], winner: "India" },
+      ],
     },
   ]);
 
@@ -172,18 +242,19 @@ const CricketTournamentTree = () => {
             <div key={roundIndex} className="flex flex-col items-center relative">
               <h3 className="text-lg font-semibold mb-4">{round.round}</h3>
               <div className="relative flex flex-col items-center">
-                {round.teams.map((team, idx) => {
-                  const isWinner = round.winners.includes(team);
-                  const isBye = round.byes[idx];
-                  return (
-                    <div key={idx} className="relative flex items-center">
-                      <div className={`shadow-lg p-4 rounded-lg w-40 text-center mb-8 ${isWinner ? 'bg-green-300' : 'bg-red-300'}`}>
-                        <p className="font-bold">{team}</p>
-                        {isBye && <p className="text-sm text-gray-500">(BYE)</p>}
-                      </div>
-                    </div>
-                  );
-                })}
+                {round.fixtures.map((match, idx) => (
+                  <div key={idx} className="shadow-lg p-4 rounded-lg w-48 text-center mb-8 bg-white border border-gray-300">
+                    {match.bye ? (
+                      <p className="font-bold text-black">{match.teams[0]} (BYE)</p>
+                    ) : (
+                      <p className="font-bold">
+                        <span className={`text-${match.winner === match.teams[0] ? 'green' : 'red'}-500`}>{match.teams[0]}</span><br/>
+                        <span className="text-gray-500"> vs </span><br/>
+                        <span className={`text-${match.winner === match.teams[1] ? 'green' : 'red'}-500`}>{match.teams[1]}</span>
+                      </p>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           ))}
