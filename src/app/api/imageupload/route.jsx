@@ -7,7 +7,7 @@ export async function POST(req) {
   const prisma = new PrismaClient();
   try {
     const data = await req.json();
-    const { eventId, image,regNo,name } = data;
+    const { eventId, image, regNo, name, department } = data;
 
     const token = req.headers.get("Authorization");
 
@@ -57,6 +57,7 @@ export async function POST(req) {
         image,
         regNo,
         name,
+        department,
       },
       select: {
         id: true,
@@ -64,6 +65,7 @@ export async function POST(req) {
         image: true,
         regNo: true,
         name: true,
+        department: true,
       },
     });
 

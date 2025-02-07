@@ -5,16 +5,17 @@ import React, { useState } from "react";
 export default function UploadImage() {
     const [formData, setFormData] = useState({
         eventId: "",
-        regNo:"",
-        name:"",
+        regNo: "",
+        name: "",
+        department: "", 
         instructorImage: null,
     });
     const [previewImage, setPreviewImage] = useState(null);
     const [statusMessage, setStatusMessage] = useState("");
 
-    const handleInputChange = (
-        e
-    ) => {
+    const departments = ["Food", "Accomdation", "Transport", "Help Desk", "Registrations", "Discipline","Documentation","First Aid"]; 
+
+    const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
             ...prev,
@@ -55,6 +56,7 @@ export default function UploadImage() {
                     eventId: formData.eventId,
                     regNo: formData.regNo,
                     name: formData.name,
+                    department: formData.department, 
                     image,
                 }),
             });
@@ -63,8 +65,9 @@ export default function UploadImage() {
             setStatusMessage(data.message || "Image uploaded successfully.");
             setFormData({
                 eventId: "",
-                regNo:"",
-                name:"",
+                regNo: "",
+                name: "",
+                department: "",
                 instructorImage: null,
             });
             setPreviewImage(null);
@@ -81,121 +84,58 @@ export default function UploadImage() {
                     Upload Poster
                 </h1>
 
-                {/* Notes Section */}
-                <div className="bg-gray-700 p-4 rounded-md mb-6">
-                    <ul className="list-disc list-inside text-gray-300 text-sm">
-                        <li>Only image files (e.g., .jpg, .jpeg, .png) can be uploaded.</li>
-                        <li>Each Image size should not exceed 10MB</li>
-                    </ul>
-                </div>
-
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label
-                            htmlFor="eventId"
-                            className="block text-sm font-medium text-gray-300"
-                        >
-                            Email Id 
+                        <label className="block text-sm font-medium text-gray-300">
+                            Email Id
                         </label>
-                        <input
-                            type="text"
-                            id="eventId"
-                            name="eventId"
-                            value={formData.eventId}
-                            onChange={handleInputChange}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                            required
-                        />
+                        <input type="text" name="eventId" value={formData.eventId} onChange={handleInputChange} className="mt-1 block w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none sm:text-sm" required />
                     </div>
                     <div>
-                        <label
-                            htmlFor="regNo"
-                            className="block text-sm font-medium text-gray-300"
-                        >
-                            Registration Number 
+                        <label className="block text-sm font-medium text-gray-300">
+                            Registration Number
                         </label>
-                        <input
-                            type="text"
-                            id="regNo"
-                            name="regNo"
-                            value={formData.regNo}
-                            onChange={handleInputChange}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                            required
-                        />
+                        <input type="text" name="regNo" value={formData.regNo} onChange={handleInputChange} className="mt-1 block w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none sm:text-sm" required />
                     </div>
                     <div>
-                        <label
-                            htmlFor="name"
-                            className="block text-sm font-medium text-gray-300"
-                        >
-                            Name 
+                        <label className="block text-sm font-medium text-gray-300">
+                            Name
                         </label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                            required
-                        />
+                        <input type="text" name="name" value={formData.name} onChange={handleInputChange} className="mt-1 block w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none sm:text-sm" required />
                     </div>
-
                     <div>
-                        <label
-                            htmlFor="instructorImage"
-                            className="block text-sm font-medium text-gray-300"
-                        >
+                        <label className="block text-sm font-medium text-gray-300">
+                            Department
+                        </label>
+                        <select name="department" value={formData.department} onChange={handleInputChange} className="mt-1 block w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none sm:text-sm" required>
+                            <option value="">Select Department</option>
+                            {departments.map((dept, index) => (
+                                <option key={index} value={dept}>{dept}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-300">
                             Photo
                         </label>
-                        <div
-                            className={`mt-1 w-full h-40 sm:h-48 flex items-center justify-center border-2 ${previewImage
-                                ? "border-gray-600"
-                                : "border-dashed border-gray-500"
-                                } rounded-md bg-gray-700 relative`}
-                        >
+                        <div className={`mt-1 w-full h-40 sm:h-48 flex items-center justify-center border-2 ${previewImage ? "border-gray-600" : "border-dashed border-gray-500"} rounded-md bg-gray-700 relative`}>
                             {previewImage ? (
-                                <img
-                                    src={previewImage}
-                                    alt="Selected"
-                                    className="h-full w-full object-cover rounded-md"
-                                />
+                                <img src={previewImage} alt="Selected" className="h-full w-full object-cover rounded-md" />
                             ) : (
-                                <label
-                                    htmlFor="instructorImage"
-                                    className="flex flex-col items-center justify-center cursor-pointer"
-                                >
+                                <label className="flex flex-col items-center justify-center cursor-pointer">
                                     <span className="text-gray-400 text-lg sm:text-2xl">+</span>
-                                    <span className="text-gray-400 text-sm sm:text-base">
-                                        Upload an image
-                                    </span>
+                                    <span className="text-gray-400 text-sm sm:text-base">Upload an image</span>
                                 </label>
                             )}
-                            <input
-                                type="file"
-                                id="instructorImage"
-                                name="instructorImage"
-                                accept="image/*"
-                                onChange={handleFileChange}
-                                className="absolute inset-0 opacity-0 cursor-pointer"
-                                required
-                            />
+                            <input type="file" name="instructorImage" accept="image/*" onChange={handleFileChange} className="absolute inset-0 opacity-0 cursor-pointer" required />
                         </div>
                     </div>
-
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                    >
+                    <button type="submit" className="w-full bg-blue-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none">
                         Upload Image
                     </button>
                 </form>
-
                 {statusMessage && (
-                    <p className="mt-4 text-sm text-center text-gray-400">
-                        {statusMessage}
-                    </p>
+                    <p className="mt-4 text-sm text-center text-gray-400">{statusMessage}</p>
                 )}
             </div>
         </div>
