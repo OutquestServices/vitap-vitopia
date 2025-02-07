@@ -242,19 +242,24 @@ const CricketTournamentTree = () => {
             <div key={roundIndex} className="flex flex-col items-center relative">
               <h3 className="text-lg font-semibold mb-4">{round.round}</h3>
               <div className="relative flex flex-col items-center">
-                {round.fixtures.map((match, idx) => (
-                  <div key={idx} className="shadow-lg p-4 rounded-lg w-48 text-center mb-8 bg-white border border-gray-300">
-                    {match.bye ? (
-                      <p className="font-bold text-black">{match.teams[0]} (BYE)</p>
-                    ) : (
-                      <p className="font-bold">
-                        <span className={`text-${match.winner === match.teams[0] ? 'green' : 'red'}-500`}>{match.teams[0]}</span><br/>
-                        <span className="text-gray-500"> vs </span><br/>
-                        <span className={`text-${match.winner === match.teams[1] ? 'green' : 'red'}-500`}>{match.teams[1]}</span>
-                      </p>
-                    )}
-                  </div>
-                ))}
+                {round.fixtures.map((match, idx) => {
+                  const team1Class = match.winner === match.teams[0] ? "text-green-500" : "text-red-500";
+                  const team2Class = match.winner === match.teams[1] ? "text-green-500" : "text-red-500";
+
+                  return (
+                    <div key={idx} className="shadow-lg p-4 rounded-lg w-48 text-center mb-8 bg-white border border-gray-300">
+                      {match.bye ? (
+                        <p className="font-bold text-black">{match.teams[0]} (BYE)</p>
+                      ) : (
+                        <p className="font-bold">
+                          <span className={team1Class}>{match.teams[0]}</span><br />
+                          <span className="text-gray-500"> vs </span><br />
+                          <span className={team2Class}>{match.teams[1]}</span>
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}
