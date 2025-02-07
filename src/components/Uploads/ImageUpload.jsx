@@ -5,6 +5,8 @@ import React, { useState } from "react";
 export default function UploadImage() {
     const [formData, setFormData] = useState({
         eventId: "",
+        regNo:"",
+        name:"",
         instructorImage: null,
     });
     const [previewImage, setPreviewImage] = useState(null);
@@ -51,6 +53,8 @@ export default function UploadImage() {
                 },
                 body: JSON.stringify({
                     eventId: formData.eventId,
+                    regNo: formData.regNo,
+                    name: formData.name,
                     image,
                 }),
             });
@@ -59,6 +63,8 @@ export default function UploadImage() {
             setStatusMessage(data.message || "Image uploaded successfully.");
             setFormData({
                 eventId: "",
+                regNo:"",
+                name:"",
                 instructorImage: null,
             });
             setPreviewImage(null);
@@ -89,7 +95,7 @@ export default function UploadImage() {
                             htmlFor="eventId"
                             className="block text-sm font-medium text-gray-300"
                         >
-                            Registration Number
+                            Email Id 
                         </label>
                         <input
                             type="text"
@@ -101,13 +107,47 @@ export default function UploadImage() {
                             required
                         />
                     </div>
+                    <div>
+                        <label
+                            htmlFor="regNo"
+                            className="block text-sm font-medium text-gray-300"
+                        >
+                            Registration Number 
+                        </label>
+                        <input
+                            type="text"
+                            id="regNo"
+                            name="regNo"
+                            value={formData.regNo}
+                            onChange={handleInputChange}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label
+                            htmlFor="name"
+                            className="block text-sm font-medium text-gray-300"
+                        >
+                            Name 
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            required
+                        />
+                    </div>
 
                     <div>
                         <label
                             htmlFor="instructorImage"
                             className="block text-sm font-medium text-gray-300"
                         >
-                            Poster
+                            Photo
                         </label>
                         <div
                             className={`mt-1 w-full h-40 sm:h-48 flex items-center justify-center border-2 ${previewImage
