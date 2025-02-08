@@ -43,7 +43,9 @@ function SportsList() {
                     <motion.li whileHover={{ x: 10 }} className="flex items-center">
                         • All sports playing days include free lodging (50 km away) and food.
                     </motion.li>
-
+                    <motion.li whileHover={{ x: 10 }} className="flex items-center">
+                        • Men's and Women's Table Tennis, including Singles and Doubles, has been newly added to the list.
+                    </motion.li>
                 </ul>
             </div>
             <div className="flex flex-wrap justify-center items-center w-full p-4 py-20">
