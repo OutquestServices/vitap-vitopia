@@ -122,18 +122,6 @@ export default function AdminDashboard() {
         </ul>
       </motion.div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {session?.user?.club === "all" ? (
-          <Link href="/dashboard/admin/uploadposter">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-md flex items-center justify-between w-full transition duration-300 ease-in-out"
-            >
-              <span>Upload Poster</span>
-              <FiUpload className="text-lg" />
-            </motion.button>
-          </Link>
-        ) : null}
         <Link href="/dashboard/admin/registrations">
           <motion.button
             whileHover={{ scale: 1.05 }}

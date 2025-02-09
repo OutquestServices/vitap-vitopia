@@ -89,9 +89,9 @@ export default function Registrations() {
   const filteredData = React.useMemo(() => {
     return data.filter(item => (
       (item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       item.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       item.universityName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       item.event.toLowerCase().includes(searchTerm.toLowerCase())) &&
+        item.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.universityName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.event.toLowerCase().includes(searchTerm.toLowerCase())) &&
       (eventFilter === '' || item.event === eventFilter) &&
       (categoryFilter === '' || item.regType === categoryFilter)
     ));
@@ -155,12 +155,50 @@ export default function Registrations() {
   // If data hasn't been fetched yet, show a loading spinner
   if (data.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-black">
+      <div className="relative min-h-screen flex flex-col items-center justify-center bg-black">
         <motion.div
-          className="w-12 h-12 border-t-4 border-blue-500 rounded-full animate-spin"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-        ></motion.div>
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center"
+        >
+          {/* Creative SVG illustration */}
+          <motion.svg
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="w-24 h-24 text-gray-500 mb-4"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 17v-6a3 3 0 016 0v6m-6 0h6"
+            />
+          </motion.svg>
+
+          <motion.h2
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="text-2xl font-bold text-white"
+          >
+            Oops! No Registrations Found
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="mt-2 text-gray-400 text-center max-w-md"
+          >
+            You don't have access to view the registrations or No registrations found.
+          </motion.p>
+        </motion.div>
       </div>
     );
   }
