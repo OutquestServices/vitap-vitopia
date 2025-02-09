@@ -1,8 +1,11 @@
 "use client";
 import { generateToken } from "@/lib/jwttoken"; // Ensure this function is defined in your project
 import QrReader from "modern-react-qr-reader";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
+import { motion } from "framer-motion";
+
 
 const VerifyQR = () => {
     // Holds whether the popup modal is open
@@ -11,6 +14,70 @@ const VerifyQR = () => {
     const [scannedData, setScannedData] = useState(null);
     // Holds any messages (error or success) to display in the popup
     const [message, setMessage] = useState("");
+
+    const { data: session, status } = useSession();
+
+    if (status === "loading") {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-black">
+                <motion.div
+                    className="w-12 h-12 border-t-4 border-blue-500 rounded-full animate-spin"
+                    animate={{ rotate: 360 }}
+                    transition={{
+                        duration: 1,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "linear",
+                    }}
+                ></motion.div>
+            </div>
+        );
+    }
+
+    if (!session) {
+        return (
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="bg-black min-h-screen flex flex-col items-center justify-center gap-10 p-4"
+            >
+                <h1 className="text-4xl font-bold text-white mb-4">Access Denied</h1>
+                <p className="text-xl text-gray-300">
+                    You are not authenticated. Please sign in.
+                </p>
+                <button
+                    onClick={() =>
+                        signIn("google", { callbackUrl: "/auth/role-bridge" })
+                    }
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                    Sign In
+                </button>
+            </motion.div>
+        );
+    }
+
+    if (session?.user?.role !== "admin") {
+        return (
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="bg-black min-h-screen flex flex-col items-center justify-center gap-10 p-4"
+            >
+                <h1 className="text-4xl font-bold text-white mb-4">Unauthorized</h1>
+                <p className="text-xl text-gray-300">
+                    You are not authorized to view this page.
+                </p>
+                <Link
+                    href="/"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                    Return to Home
+                </Link>
+            </motion.div>
+        );
+    }
 
     // Called if an error occurs while reading the QR code
     const handleError = (err) => {
@@ -53,7 +120,7 @@ const VerifyQR = () => {
             setMessage("");
 
             // Generate a token using the scanned data
-            const generated_token = generateToken(scannedData, 60 * 60 * 24 * 30);
+            const generated_token = generateToken({ scannedData, adminEmail: session.user?.email }, 60 * 60 * 24 * 30);
             const response = await fetch("/api/verify", {
                 method: "GET",
                 headers: {
@@ -82,8 +149,8 @@ const VerifyQR = () => {
         <>
             {/* Popup Modal */}
             {popup && (
-                <div className="fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center">
-                    <div className="p-4 bg-white shadow-xl rounded-lg relative max-w-md w-full">
+                <div className="fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center text-black">
+                    <div className="p-4 bg-white shadow-xl rounded-lg relative max-w-md w-full text-black">
                         {/* Close Button */}
                         <IoMdClose
                             size={30}
@@ -91,7 +158,7 @@ const VerifyQR = () => {
                             onClick={onPopUpClose}
                         />
                         {scannedData ? (
-                            <div>
+                            <div className="text-black">
                                 <h2 className="text-xl font-bold mb-2">Scan Details</h2>
                                 <p>
                                     <strong>Name:</strong> {scannedData.name}
@@ -129,7 +196,6 @@ const VerifyQR = () => {
                                 >
                                     Verify Ticket
                                 </button>
-                                {message && <p className="mt-2 text-center">{message}</p>}
                             </div>
                         ) : (
                             // In case no scanned data exists, display the message.

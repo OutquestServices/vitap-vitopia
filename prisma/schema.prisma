@@ -82,3 +82,11 @@ model Posters {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
+
+model scanHistory {
+  id         Int      @id @default(autoincrement())
+  adminEmail String
+  userEmail  String
+  invoiceId  String
+  createdAt  DateTime @default(now())
+}

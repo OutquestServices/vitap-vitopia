@@ -34,7 +34,7 @@ export async function GET(req) {
 
         const data = await prisma.registration.findUnique({
             where: {
-                receiptId: data_token_content.receiptId,
+                receiptId: data_token_content.scannedData.receiptId,
             },
         });
 
@@ -47,9 +47,17 @@ export async function GET(req) {
             });
         }
 
+        await prisma.scanHistory.create({
+            data:{
+                invoiceId: data_token_content.scannedData.invoiceId,
+                adminEmail: data_token_content.adminEmail,
+                userEmail: data_token_content.scannedData.email,
+            }
+        })
+
         await prisma.registration.update({
             where: {
-                receiptId: data_token_content.receiptId,
+                receiptId: data_token_content.scannedData.receiptId,
             },
             data: {
                 scanned: true,
