@@ -11,7 +11,10 @@ export default function Registrations() {
   const [totalParticipants, setTotalParticipants] = useState(0);
   const [todayParticipants, setTodayParticipants] = useState(0);
   const { data: session, status } = useSession();
-  const [sportFilter, setSportFilter] = useState('');
+
+  // Replace the old sport and sub-category filters with a single event filter
+  const [eventFilter, setEventFilter] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
   // Fetch data only if a session exists
@@ -54,12 +57,14 @@ export default function Registrations() {
     fetchData();
   }, [session]);
 
-  // Define columns (memoized so they don’t change on every render)
+  // Define columns
+  // Renamed the "Sport" column to "Event" (and use the "event" accessor)
+  // Also added a new "Category" column that displays the regType value.
   const columns = React.useMemo(() => [
     { Header: 'ID', accessor: 'id' },
     { Header: 'Name', accessor: 'name' },
     { Header: 'Email', accessor: 'email' },
-    { Header: 'Sport', accessor: 'sport' },
+    { Header: 'Event', accessor: 'event' },
     { Header: 'Amount', accessor: 'amount' },
     { Header: 'Purchased At', accessor: 'purchasedAt' },
     { Header: 'Invoice ID', accessor: 'invoiceId' },
@@ -68,19 +73,29 @@ export default function Registrations() {
     { Header: 'University', accessor: 'universityName' },
     { Header: 'Coach Name', accessor: 'coachName' },
     { Header: 'Coach Mobile', accessor: 'coachMobile' },
+    { Header: 'Category', accessor: 'regType' },
   ], []);
 
-  // Compute filtered data based on the search term and sport filter.
-  // (Using useMemo avoids having a separate state and useEffect for filtering.)
+  // Compute unique values for the dropdowns
+  const uniqueEvents = React.useMemo(() => {
+    return Array.from(new Set(data.map(item => item.event)));
+  }, [data]);
+
+  const uniqueCategories = React.useMemo(() => {
+    return Array.from(new Set(data.map(item => item.regType)));
+  }, [data]);
+
+  // Compute filtered data based on search and dropdown filters.
   const filteredData = React.useMemo(() => {
     return data.filter(item => (
       (item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
        item.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
        item.universityName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-       item.sport.toLowerCase().includes(searchTerm.toLowerCase())) &&
-      (sportFilter === '' || item.sport === sportFilter)
+       item.event.toLowerCase().includes(searchTerm.toLowerCase())) &&
+      (eventFilter === '' || item.event === eventFilter) &&
+      (categoryFilter === '' || item.regType === categoryFilter)
     ));
-  }, [data, searchTerm, sportFilter]);
+  }, [data, searchTerm, eventFilter, categoryFilter]);
 
   // Setup the table instance with pagination using filtered data.
   const {
@@ -102,11 +117,6 @@ export default function Registrations() {
     { columns, data: filteredData, initialState: { pageIndex: 0, pageSize: 10 } },
     usePagination
   );
-
-  // Compute unique sports (from the full data) for the dropdown
-  const uniqueSports = React.useMemo(() => {
-    return Array.from(new Set(data.map(item => item.sport)));
-  }, [data]);
 
   // Show a spinner while the session is loading
   if (status === "loading") {
@@ -168,20 +178,32 @@ export default function Registrations() {
       <div className="flex flex-col md:flex-row gap-6 justify-between items-center p-4">
         <input
           type="text"
-          placeholder="Search by name, email, university or sport"
+          placeholder="Search by name, email, university or event"
           className="w-[300px] h-[50px] bg-white text-black rounded-md p-2"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
         <select
           className="w-[300px] h-[50px] bg-white text-black rounded-md p-2"
-          value={sportFilter}
-          onChange={e => setSportFilter(e.target.value)}
+          value={eventFilter}
+          onChange={e => setEventFilter(e.target.value)}
         >
-          <option value="">All Sports</option>
-          {uniqueSports.map((sport, index) => (
-            <option key={index} value={sport}>
-              {sport}
+          <option value="">All Events</option>
+          {uniqueEvents.map((event, index) => (
+            <option key={index} value={event}>
+              {event}
+            </option>
+          ))}
+        </select>
+        <select
+          className="w-[300px] h-[50px] bg-white text-black rounded-md p-2"
+          value={categoryFilter}
+          onChange={e => setCategoryFilter(e.target.value)}
+        >
+          <option value="">All Categories</option>
+          {uniqueCategories.map((cat, index) => (
+            <option key={index} value={cat}>
+              {cat}
             </option>
           ))}
         </select>
