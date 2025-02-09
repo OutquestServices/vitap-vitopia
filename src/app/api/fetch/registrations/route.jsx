@@ -47,9 +47,26 @@ export async function GET(req) {
             });
         }
 
-        const data = await prisma.sportsRegistration.findMany({
+        if (user.event === "all") {
+            const data = await prisma.registration.findMany({
+                orderBy: {
+                    purchasedAt: "desc",
+                }
+            });
+            return new NextResponse(JSON.stringify({ message: "Fetched", data }), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        }
+
+        const data = await prisma.registration.findMany({
+            where: {
+                regType: user.event,
+            },
             orderBy: {
-                purchasedAt: "asc",
+                purchasedAt: "desc",
             }
         });
         return new NextResponse(JSON.stringify({ message: "Fetched", data }), {

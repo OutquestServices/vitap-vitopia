@@ -55,7 +55,7 @@ model loginHistory {
   loggedInAt DateTime @default(now())
 }
 
-model sportsRegistration {
+model Registration {
   id             Int      @id @default(autoincrement())
   name           String
   email          String
@@ -68,6 +68,7 @@ model sportsRegistration {
   universityName String?
   coachName      String?
   coachMobile    String?
+  regType        String   @default("sports")
 }
 
 model Posters {
