@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence } from "framer-motion";
-import { signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
   const { data: session, status } = useSession();
@@ -79,9 +79,11 @@ export default function Navbar() {
       </div>
       <FloatingDockMobile items={items} status={status} />
       <div className="relative w-[200px] h-[80px] hidden md:block">
-        <a href="/sports">
-          <Button>Register Now</Button>
-        </a>
+        <button onClick={() =>
+          signIn("google", { callbackUrl: "/auth/role-bridge" })
+        }>
+          <Button>Grab Passes</Button>
+        </button>
       </div>
     </div>
   );
@@ -101,9 +103,11 @@ const FloatingDockMobile = ({ items, className, status }) => {
                 {item.title}
               </a>
             ))}
-            <a href="/sports" className="block p-4">
-              Grab Tickets
-            </a>
+            <button onClick={() =>
+              signIn("google", { callbackUrl: "/auth/role-bridge" })
+            } className="block p-4">
+              Grab Passes
+            </button>
             {status === "authenticated" ? (
               <button onClick={() =>
                 signOut({ callbackUrl: "/" })
