@@ -11,6 +11,7 @@ export default function Registrations() {
   const [totalParticipants, setTotalParticipants] = useState(0);
   const [todayParticipants, setTodayParticipants] = useState(0);
   const { data: session, status } = useSession();
+  const [loading, setLoading] = useState(true);
 
   // Replace the old sport and sub-category filters with a single event filter
   const [eventFilter, setEventFilter] = useState('');
@@ -23,6 +24,7 @@ export default function Registrations() {
 
     const fetchData = async () => {
       try {
+        setLoading(true);
         const generated_token = generateToken(session?.user, 60 * 60 * 24);
 
         const response = await fetch('/api/fetch/registrations', {
@@ -49,6 +51,7 @@ export default function Registrations() {
         setTotalAmount(total);
         setTotalParticipants(participants);
         setTodayParticipants(registeredToday);
+        setLoading(false);
       } catch (error) {
         console.error('Failed to fetch data:', error);
       }
@@ -61,7 +64,7 @@ export default function Registrations() {
   // Renamed the "Sport" column to "Event" (and use the "event" accessor)
   // Also added a new "Category" column that displays the regType value.
   const columns = React.useMemo(() => [
-    { Header: 'ID', accessor: 'id' },
+    { Header: 'S.No', accessor: (row, index) => index + 1 },
     { Header: 'Name', accessor: 'name' },
     { Header: 'Email', accessor: 'email' },
     { Header: 'Event', accessor: 'event' },
@@ -119,7 +122,7 @@ export default function Registrations() {
   );
 
   // Show a spinner while the session is loading
-  if (status === "loading") {
+  if (status === "loading" || loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-black">
         <motion.div
