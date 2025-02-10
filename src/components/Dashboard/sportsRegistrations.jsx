@@ -4,6 +4,8 @@ import { useTable, usePagination } from 'react-table';
 import { motion } from "framer-motion";
 import { signIn, useSession } from 'next-auth/react';
 import { generateToken } from '@/lib/jwttoken';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 export default function Registrations() {
   const [data, setData] = useState([]);
@@ -120,6 +122,24 @@ export default function Registrations() {
     { columns, data: filteredData, initialState: { pageIndex: 0, pageSize: 10 } },
     usePagination
   );
+
+  const selectedFields = ["name", "email", "event", "universityName", "coachName", "coachMobile", "receiptId"];
+
+  const downloadExcel = () => {
+    const filteredData = data.map(entry =>
+      selectedFields.reduce((obj, field) => {
+        obj[field] = entry[field];
+        return obj;
+      }, {})
+    );
+
+    const worksheet = XLSX.utils.json_to_sheet(filteredData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Registrations");
+    const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(blob, "Registrations.xlsx");
+  };
 
   // Show a spinner while the session is loading
   if (status === "loading" || loading) {
@@ -248,6 +268,12 @@ export default function Registrations() {
             </option>
           ))}
         </select>
+        <button
+          onClick={downloadExcel}
+          className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          Download Excel
+        </button>
       </div>
       <div className="overflow-x-auto">
         <table {...getTableProps()} className="w-full border-collapse">
