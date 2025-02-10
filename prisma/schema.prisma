@@ -68,7 +68,7 @@ model Registration {
   universityName String?
   coachName      String?
   coachMobile    String?
-  regType        String   @default("sports")
+  regType        String   
   scanned        Boolean  @default(false)
 }
 

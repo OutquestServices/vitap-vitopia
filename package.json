@@ -31,6 +31,7 @@
     "modern-react-qr-reader": "^1.0.12",
     "next": "^14.2.22",
     "next-auth": "^4.24.11",
+    "pg": "^8.13.1",
     "qrcode": "^1.5.4",
     "qrcode.react": "^4.2.0",
     "react": "^18.3.1",
