@@ -14,13 +14,11 @@ export default function HeroSection1() {
                 </div>
                 <div className="flex md:flex-row flex-col gap-4 md:space-x-4 md:mt-8 items-start justify-start w-full h-full">
                     <a href="/sports" target="_blank" className="testFont border-2 text-white font-semibold text-sm md:font-semibold md:text-lg px-5 py-1 md:px-10 md:py-3 shadow-lg">
-                        Register Now
+                        Sports
                     </a>
-                    <button onClick={() =>
-                        signIn("google", { callbackUrl: "/auth/role-bridge" })
-                    } target="_blank" className="testFont bg-[#FF8321] text-black font-semibold text-sm md:font-bold md:text-lg px-6 py-1 md:px-12 md:py-3 shadow-lg">
-                        Grab Tickets
-                    </button>
+                    <a href="/cluturals" target="_blank" className="testFont bg-[#FF8321] text-black font-semibold text-sm md:font-bold md:text-lg px-6 py-1 md:px-12 md:py-3 shadow-lg">
+                        Cluturals
+                    </a>
                 </div>
             </div>
         </div>

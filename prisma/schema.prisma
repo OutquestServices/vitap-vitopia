@@ -44,6 +44,28 @@ model sports {
   updatedAt   DateTime @updatedAt
 }
 
+model primeEvents {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  startPrice  String
+  endPrice    String
+  imageLink   String
+  link        String
+  rules       Json?
+  firstPrize  String
+  secondPrize String
+  thirdPrize  String
+  totalPrize  String
+  venue       String
+  startDate   String
+  endDate     String
+  startTime   String
+  endTime     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model loginHistory {
   id         Int      @id @default(autoincrement())
   googleId   String

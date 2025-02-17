@@ -28,11 +28,10 @@ export default function Navbar() {
       icon: <IconPennant2 color="white" />,
       href: "/sports",
     },
-    // {
-    //   title: "Culturals",
-    //   icon: <IconTicket color="white" />,
-    //   href: "/culturals",
-    // },
+    {
+      title: "Culturals",
+      href: "/cluturals",
+    },
     {
       title: "About",
       icon: <IconUser color="white" />,
@@ -61,7 +60,7 @@ export default function Navbar() {
           />
         </div>
         <div className="hidden md:block relative w-auto items-center justify-center top-4">
-          <div className="w-[500px] h-[60px] rounded-full flex items-center justify-between bg-black px-10 font-bold">
+          <div className="w-[600px] h-[60px] rounded-full flex items-center justify-between bg-black px-10 font-bold">
             {items.map((item, index) => (
               <a className="text-white" href={item.href} key={index}>
                 {item.title}
