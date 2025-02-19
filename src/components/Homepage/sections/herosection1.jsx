@@ -16,8 +16,8 @@ export default function HeroSection1() {
                     <a href="/sports" target="_blank" className="testFont border-2 text-white font-semibold text-sm md:font-semibold md:text-lg px-5 py-1 md:px-10 md:py-3 shadow-lg">
                         Sports
                     </a>
-                    <a href="/cluturals" target="_blank" className="testFont bg-[#FF8321] text-black font-semibold text-sm md:font-bold md:text-lg px-6 py-1 md:px-12 md:py-3 shadow-lg">
-                        Cluturals
+                    <a href="/culturals" target="_blank" className="testFont bg-[#FF8321] text-black font-semibold text-sm md:font-bold md:text-lg px-6 py-1 md:px-12 md:py-3 shadow-lg">
+                        Culturals
                     </a>
                 </div>
             </div>

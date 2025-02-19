@@ -30,7 +30,7 @@ export default function Navbar() {
     },
     {
       title: "Culturals",
-      href: "/cluturals",
+      href: "/culturals",
     },
     {
       title: "About",
