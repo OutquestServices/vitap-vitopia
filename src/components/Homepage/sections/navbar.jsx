@@ -32,20 +32,20 @@ export default function Navbar() {
       title: "Culturals",
       href: "/culturals",
     },
-    {
-      title: "About",
-      icon: <IconUser color="white" />,
-      href: "/about",
-    },
+    // {
+    //   title: "About",
+    //   icon: <IconUser color="white" />,
+    //   href: "/about",
+    // },
     {
       title: "Contact",
       icon: <IconAddressBook color="white" />,
       href: "/contact",
     },
     {
-      title: "Merch",
+      title: "Merchandise",
       icon: <IconBuildingStore color="white" />,
-      href: "/merch",
+      href: "/merchandise",
     },
   ];
   return (
