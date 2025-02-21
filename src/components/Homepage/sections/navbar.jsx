@@ -42,11 +42,11 @@ export default function Navbar() {
       icon: <IconAddressBook color="white" />,
       href: "/contact",
     },
-    // {
-    //   title: "Shop",
-    //   icon: <IconBuildingStore color="white" />,
-    //   href: "/shop",
-    // },
+    {
+      title: "Merch",
+      icon: <IconBuildingStore color="white" />,
+      href: "/merch",
+    },
   ];
   return (
     <div className="absolute z-30 w-full flex items-center justify-between px-6 pt-6 md:pt-12">
