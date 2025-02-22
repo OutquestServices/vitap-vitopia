@@ -14,7 +14,7 @@ const TimerSection = () => {
             </p>
             <div className="mt-4 lg:mt-8">
               <Link
-                href="/sports"
+                href="/merchandise"
                 target="_blank"
                 className="testFont inline-flex items-center px-6 py-3 bg-[#FF8321] text-black text-sm md:text-base lg:text-lg font-semibold rounded hover:bg-gray-100 hover:text-black transition duration-300"
               >

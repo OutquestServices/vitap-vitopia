@@ -13,8 +13,8 @@ export function Tshirts() {
         { src: "/tshirts/img8.avif", title: "Night Tribe T Shirt", description: "VITopia 2025 T-Shirt", price: "₹ 300" },
         // { src: "/tshirts/img2.avif", title: "Butterfly T Shirt", description: "VITopia 2025 T-Shirt", price: "₹ 300" },
         { src: "/tshirts/img6.avif", title: "Butterfly T Shirt", description: "VITopia 2025 T-Shirt", price: "₹ 300" },
-        { src: "/tshirts/img4.avif", title: "Cosmic Vides Black T Shirt", description: "VITopia 2025 T-Shirt", price: "₹ 300" },
-        { src: "/tshirts/img5.avif", title: "Cosmic Vides White T Shirt", description: "VITopia 2025 T-Shirt", price: "₹ 300" }
+        { src: "/tshirts/img4.avif", title: "Cosmic Vibes Black T Shirt", description: "VITopia 2025 T-Shirt", price: "₹ 300" },
+        { src: "/tshirts/img5.avif", title: "Cosmic Vibes White T Shirt", description: "VITopia 2025 T-Shirt", price: "₹ 300" }
     ];
 
     return (
@@ -65,7 +65,7 @@ export function Tshirts() {
                                     {tshirt.price}
                                 </p>
                                 <a
-                                    href="#"
+                                    href="https://events.vitap.ac.in/e/vitopia-2025-t-shirts-70ec62a9-cbad-4124-938f-e59a699f1727"
                                     target="_blank"
                                     className="inline-block bg-blue-500 text-white text-left mt-4 px-6 py-2 rounded hover:bg-blue-600 transition-colors"
                                 >

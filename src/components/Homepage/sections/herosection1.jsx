@@ -13,8 +13,8 @@ export default function HeroSection1() {
                     INTERNATIONAL <br /> SPORTS & <br />CULTURAL FEST
                 </div>
                 <div className="flex md:flex-row flex-col gap-4 md:space-x-4 md:mt-8 items-start justify-start w-full h-full">
-                    <a href="/sports" target="_blank" className="testFont border-2 text-white font-semibold text-sm md:font-semibold md:text-lg px-5 py-1 md:px-10 md:py-3 shadow-lg">
-                        Sports
+                    <a href="#" target="_blank" className="testFont border-2 text-white font-semibold text-sm md:font-semibold md:text-lg px-5 py-1 md:px-10 md:py-3 shadow-lg">
+                        Non Prime
                     </a>
                     <a href="/culturals" target="_blank" className="testFont bg-[#FF8321] text-black font-semibold text-sm md:font-bold md:text-lg px-6 py-1 md:px-12 md:py-3 shadow-lg">
                         Culturals

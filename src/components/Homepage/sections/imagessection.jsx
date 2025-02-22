@@ -5,13 +5,13 @@ export default function Images() {
     {
       Image: {
         data: [
-          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+POWERLIFTING.png" } },
-          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+KARATE+2.png" } },
-          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+FOOTBALL.png" } },
-          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+CRICKET.png" } },
-          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+kabaddi.png" } },
-          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+CHESS.png" } },
-          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/vitopia+-+TRIPLE+JUMP.png" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/VSTEP+UP+CLASSICAL+A4+UPDATED.avif" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/design-VGLAM-WESTERN-A4.avif" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/vglam-traditional-a4-5.avif" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/vgiggle+stand+up+comedy+A4+website.avif" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/v-designer+(A4)-2.avif" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/NUKKAD+NATAK+A4.avif" } },
+          { attributes: { url: "https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/design+-+VSTEPUP+MODERN+A4.avif" } },
         ],
       },
     },
