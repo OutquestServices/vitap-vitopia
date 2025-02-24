@@ -1,6 +1,7 @@
 "use client";
 import { Footer } from "@/components/Homepage/sections/footer";
 import Navbar from "@/components/Homepage/sections/navbar";
+import { ProwShows } from "@/components/Merch/proshows";
 import { Tshirts } from "@/components/Merch/tshirts";
 import { PinContainer } from "@/components/ui/3d-pin";
 import React from "react";
@@ -10,8 +11,9 @@ export default function AnimatedPinDemo() {
         (
             <div className="bg-black min-h-screen">
                 <Navbar />
-                <div className=" w-full flex items-center justify-center pt-40">
+                <div className=" w-full flex flex-col items-center justify-center pt-40">
                     <Tshirts />
+                    <ProwShows/>
                 </div>
                 {/* <div className="h-[40rem] w-full flex items-center justify-center pt-40">
                     <PinContainer title="/ui.aceternity.com" href="https://twitter.com/mannupaaji">
