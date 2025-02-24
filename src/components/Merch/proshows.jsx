@@ -10,10 +10,10 @@ export function ProwShows() {
     const [hoveringIndex, setHoveringIndex] = useState(null);
 
     const tShirts = [
+        { src: "/vitopia_const.png", title: "CULTURAL COMBO", description: "Internals (3 Days Combo + T-Shirt) Externals (3 Days Combo)", internal_price: "₹ 1500", external_price: "₹ 1800" },
         { src: "/vitopia_const.png", title: "CULTURAL DAY 1", description: "Day 1 Culturals", internal_price: "₹ 400", external_price: "₹ 600" },
         { src: "/vitopia_const.png", title: "CULTURAL DAY 2", description: "Day 2 Culturals", internal_price: "₹ 700", external_price: "₹ 800" },
         { src: "/vitopia_const.png", title: "CULTURAL DAY 3", description: "Day 3 Culturals", internal_price: "₹ 700", external_price: "₹ 800" },
-        { src: "/vitopia_const.png", title: "CULTURAL COMBO", description: "Internals (3 Days Combo + T-Shirt) Externals (3 Days Combo)", internal_price: "₹ 1500", external_price: "₹ 1800" },
     ];
 
     return (
@@ -21,19 +21,73 @@ export function ProwShows() {
             <h1 className="text-4xl font-semibold text-white text-center py-8">
                 CULTURALS
             </h1>
+
+            {/* Center the first card */}
+            <div className="flex justify-center mb-8">
+                <div className="w-full relative rounded-3xl overflow-hidden max-w-[75vw] md:max-w-96 bg-gradient-to-r from-[#1D2235] to-[#121318] p-8">
+                    <Rays />
+                    <Beams />
+                    <div className="relative z-10">
+                        <Lens
+                            hovering={hoveringIndex === 0}
+                            setHovering={(isHovering) =>
+                                setHoveringIndex(isHovering ? 0 : null)
+                            }
+                        >
+                            <Image
+                                src={tShirts[0].src}
+                                alt="image"
+                                layout="responsive"
+                                width={500}
+                                height={500}
+                                className="rounded-2xl object-cover w-[500px] h-[500px]"
+                            />
+                        </Lens>
+                        <motion.div
+                            animate={{
+                                filter:
+                                    hoveringIndex === 0 ? "blur(2px)" : "blur(0px)",
+                            }}
+                            className="py-4 relative z-20"
+                        >
+                            <h2 className="text-white text-2xl text-left font-bold">
+                                {tShirts[0].title}
+                            </h2>
+                            <p className="text-neutral-200 text-left mt-4">
+                                {tShirts[0].description}
+                            </p>
+                            <p className="text-neutral-200 text-left mt-4">
+                                Internal Price: {tShirts[0].internal_price}
+                            </p>
+                            <p className="text-neutral-200 text-left mt-1">
+                                External Price: {tShirts[0].external_price}
+                            </p>
+                            <a
+                                href="https://events.vitap.ac.in/e/vitopia-2025-cultural-dd247f1d-90e2-4daa-8615-441050caf953"
+                                target="_blank"
+                                className="inline-block bg-blue-500 text-white text-left mt-4 px-6 py-2 rounded hover:bg-blue-600 transition-colors"
+                            >
+                                Register Now
+                            </a>
+                        </motion.div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Display the next 3 cards in a row */}
             <div className="grid md:grid-cols-3 gap-10 justify-center">
-                {tShirts.map((tshirt, index) => (
+                {tShirts.slice(1).map((tshirt, index) => (
                     <div
-                        key={index}
+                        key={index + 1}
                         className="w-full relative rounded-3xl overflow-hidden max-w-[75vw] md:max-w-96 mx-auto bg-gradient-to-r from-[#1D2235] to-[#121318] p-8"
                     >
                         <Rays />
                         <Beams />
                         <div className="relative z-10">
                             <Lens
-                                hovering={hoveringIndex === index}
+                                hovering={hoveringIndex === index + 1}
                                 setHovering={(isHovering) =>
-                                    setHoveringIndex(isHovering ? index : null)
+                                    setHoveringIndex(isHovering ? index + 1 : null)
                                 }
                             >
                                 <Image
@@ -48,7 +102,7 @@ export function ProwShows() {
                             <motion.div
                                 animate={{
                                     filter:
-                                        hoveringIndex === index
+                                        hoveringIndex === index + 1
                                             ? "blur(2px)"
                                             : "blur(0px)",
                                 }}
@@ -61,17 +115,17 @@ export function ProwShows() {
                                     {tshirt.description}
                                 </p>
                                 <p className="text-neutral-200 text-left mt-4">
-                                    Internal Price:- {tshirt.internal_price}
+                                    Internal Price: {tshirt.internal_price}
                                 </p>
                                 <p className="text-neutral-200 text-left mt-1">
-                                    External Price:- {tshirt.external_price}
+                                    External Price: {tshirt.external_price}
                                 </p>
                                 <a
                                     href="https://events.vitap.ac.in/e/vitopia-2025-cultural-dd247f1d-90e2-4daa-8615-441050caf953"
                                     target="_blank"
                                     className="inline-block bg-blue-500 text-white text-left mt-4 px-6 py-2 rounded hover:bg-blue-600 transition-colors"
                                 >
-                                    Order Now
+                                    Register Now
                                 </a>
                             </motion.div>
                         </div>
@@ -79,6 +133,7 @@ export function ProwShows() {
                 ))}
             </div>
         </div>
+
     );
 }
 

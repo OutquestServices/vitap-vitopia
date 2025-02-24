@@ -123,7 +123,7 @@ export default function Registrations() {
     usePagination
   );
 
-  const selectedFields = ["name", "email", "event", "universityName", "coachName", "coachMobile", "receiptId"];
+  const selectedFields = ["name", "email", "event", "receiptId", "amount", "purchasedAt", "invoiceId", "orderId", "regType"];
 
   const downloadExcel = () => {
     const filteredData = data.map(entry =>
