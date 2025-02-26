@@ -39,14 +39,14 @@ function SportsList() {
         <div className="bg-black min-h-screen flex flex-col items-center relative">
             <Navbar />
             <div className="pt-44 px-16 sm:px-24 md:px-32 lg:px-40 text-xl w-full">
-                {/* <ul className="space-y-3 text-white">
+                <ul className="space-y-3 text-white">
                     <motion.li whileHover={{ x: 10 }} className="flex items-center">
-                        • All sports playing days include free lodging (50 km away) and food.
+                        • Rule Book <a href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/Vitopia+(Prime+Event+Rules)+2025+(1).pdf" target="_blank">View</a>
                     </motion.li>
-                    <motion.li whileHover={{ x: 10 }} className="flex items-center">
+                    {/* <motion.li whileHover={{ x: 10 }} className="flex items-center">
                         • All Cricket Registrations are stopped and fixtures will be shared soon.
-                    </motion.li>
-                </ul> */}
+                    </motion.li> */}
+                </ul>
             </div>
             <div className="flex flex-wrap justify-center items-center w-full p-4 py-20">
                 {data.map(event => (

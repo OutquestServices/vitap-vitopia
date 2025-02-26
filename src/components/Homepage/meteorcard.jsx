@@ -39,6 +39,7 @@ export function MeteorCard({ data }) {
           <SVGComponent />
         </div>
         <p className="font-light text-sm text-slate-400">{data.role}</p>
+        <p className="font-light text-sm text-slate-400">{data.day}</p>
       </div>
 
       {/* Optional Meteors Effect */}

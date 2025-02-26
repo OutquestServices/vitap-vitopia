@@ -10,7 +10,7 @@ const TimerSection = () => {
           {/* Text and button column */}
           <div className="lg:col-span-1">
             <p className="text-[28px] md:text-3xl lg:text-[44px] leading-10 font-bold testFont">
-              CULTURALS <br className="hidden md:block" /> STARTS IN
+              CULTURAL FEST <br className="hidden md:block" /> STARTS IN
             </p>
             <div className="mt-4 lg:mt-8">
               <Link

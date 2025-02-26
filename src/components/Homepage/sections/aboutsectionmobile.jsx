@@ -20,7 +20,7 @@ export default function AboutMobile() {
             About VITopia '24
           </h1>
         </div>
-        <p className="text-white font-Montserrat text-[14px] text-center">
+        <p className="text-white font-Montserrat text-[14px] text-justify">
           VITOPIA is the annual international cultural and sports festival
           conducted by VIT-AP University, celebrating its endless enthusiasm for
           various sports and art forms. VITOPIA 2024 marks the fifth edition of
@@ -46,7 +46,7 @@ export default function AboutMobile() {
             About VIT-AP
           </h1>
         </div>
-        <p className="text-white font-Montserrat text-[14px] text-center">
+        <p className="text-white font-Montserrat text-[14px] text-justify">
           VIT-AP University was established in 2017 in Amaravati, near Vijayawada, Andhra Pradesh, with a nurturing environment, state-of-the-art facilities, and an infrastructure covering 44,50,664 square meters, all within our sprawling 100-acre campus. VIT-AP University has achieved the prestigious #1 ranking as the Emerging Private University in India for three consecutive years (2022, 2023, and 2024) in the Outlook Ranking for Higher Education. Fostering a rich learning environment, our diverse community comprises over 17,500 students from all states, Union Territories, and 11 countries. We ensure that your academic journey leads to a promising career and higher study opportunities. With over 90% of our students getting placements spread across the globe and an impressive highest package of 38 LPA, the university also supports 150+ STAR Schemes, offering top packages of 24.7 LPA, empowering rural students for global opportunities. Our state-of-the-art infrastructure includes research facilities worth 8 crore INR, resulting in 3,271 publications in reputed journals and 594 published patents. We provide a nurturing atmosphere for entrepreneurial minds with 35,000 square feet of incubation and startup space dedicated to fostering innovation.
         </p>
       </div>

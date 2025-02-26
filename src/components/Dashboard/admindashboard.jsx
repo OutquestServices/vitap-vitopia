@@ -75,7 +75,7 @@ export default function AdminDashboard() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="bg-black min-h-screen flex flex-col items-center justify-center gap-10 p-4"
+      className="relative bg-black min-h-screen flex flex-col items-center justify-center gap-10 p-4 pt-20"
     >
       <h1 className="text-4xl font-bold text-white mb-8">Admin Dashboard</h1>
       <motion.div
