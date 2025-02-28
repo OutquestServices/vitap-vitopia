@@ -12,8 +12,8 @@ export default function AnimatedPinDemo() {
             <div className="bg-black min-h-screen">
                 <Navbar />
                 <div className=" w-full flex flex-col items-center justify-center pt-40">
-                    <Tshirts />
                     <ProwShows/>
+                    <Tshirts />
                 </div>
                 {/* <div className="h-[40rem] w-full flex items-center justify-center pt-40">
                     <PinContainer title="/ui.aceternity.com" href="https://twitter.com/mannupaaji">

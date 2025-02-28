@@ -10,7 +10,7 @@ export function ProwShows() {
     const [hoveringIndex, setHoveringIndex] = useState(null);
 
     const tShirts = [
-        { src: "/vitopia_const.png", title: "CULTURAL COMBO", description: "Internals (3 Days Combo + T-Shirt) Externals (3 Days Combo)", internal_price: "₹ 1500", external_price: "₹ 1800" },
+        { src: "/merch/combo.jpg", title: "CULTURAL COMBO", description: "Internals (3 Days Combo + T-Shirt) Externals (3 Days Combo)", internal_price: "₹ 1500", external_price: "₹ 1800" },
         { src: "/vitopia_const.png", title: "CULTURAL DAY 1", description: "Day 1 Culturals", internal_price: "₹ 400", external_price: "₹ 600" },
         { src: "/vitopia_const.png", title: "CULTURAL DAY 2", description: "Day 2 Culturals", internal_price: "₹ 700", external_price: "₹ 800" },
         { src: "/vitopia_const.png", title: "CULTURAL DAY 3", description: "Day 3 Culturals", internal_price: "₹ 700", external_price: "₹ 800" },

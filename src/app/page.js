@@ -12,15 +12,15 @@ export default function Page() {
     <div className="bg-black">
       <Navbar />
       <HeroSection1 />
-      <Images />
       <TimerSection />
+      <Images />
+      <CardSection />
       <div className="hidden lg:block">
         <AboutDesktop />
       </div>
       <div className="lg:hidden">
         <AboutMobile />
       </div>
-      <CardSection />
       <Footer />
     </div>
   );

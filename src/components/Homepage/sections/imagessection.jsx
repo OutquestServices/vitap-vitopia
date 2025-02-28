@@ -18,7 +18,7 @@ export default function Images() {
   ];
 
   return (
-    <div className="bg-black text-white w-full h-full py-4 md:py-6 lg:py-10 mt-14 md:mt-0">
+    <div className="bg-black text-white w-full h-full md:py-6 lg:py-10 mt-3 md:mt-0">
       <div className="overflow-hidden">
         <div className="lg:grid-cols-7 hidden lg:grid">
           {imageStrapi[0].Image.data.slice(0, 7).map((item, index) => (
