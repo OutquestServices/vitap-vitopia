@@ -41,7 +41,7 @@ export default function TicketForm() {
                     amount: pass.amount,
                     invoiceId: pass.invoiceId,
                     universityName: pass.universityName,
-                    qrValue: JSON.stringify(pass),
+                    qrValue: JSON.stringify({ invoiceId: pass.invoiceId, name: pass.name, event: pass.event }),
                 }));
 
                 setTicketData(transformedPasses);

@@ -18,6 +18,7 @@ model Users {
   email     String   @unique
   name      String
   event     String
+  scan      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -89,7 +90,7 @@ model Registration {
   universityName String?
   coachName      String?
   coachMobile    String?
-  regType        String   
+  regType        String
   scanned        Boolean  @default(false)
 }
 
@@ -109,5 +110,13 @@ model scanHistory {
   adminEmail String
   userEmail  String
   invoiceId  String
+  createdAt  DateTime @default(now())
+}
+
+model TShirtSacn {
+  id         Int      @id @default(autoincrement())
+  adminEmail String
+  userEmail  String
+  invoiceId  String   @unique
   createdAt  DateTime @default(now())
 }

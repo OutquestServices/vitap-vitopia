@@ -41,7 +41,7 @@ function SportsList() {
             <div className="pt-44 px-16 sm:px-24 md:px-32 lg:px-40 text-xl w-full">
                 <ul className="space-y-3 text-white">
                     <motion.li whileHover={{ x: 10 }} className="flex items-center">
-                        • Rule Book <a href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/Vitopia+(Prime+Event+Rules)+2025+(1).pdf" target="_blank">View</a>
+                        • Rule Book <a href="https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Vitopia+(Prime+Event+Rules)_2025+.pdf" target="_blank">View</a>
                     </motion.li>
                     {/* <motion.li whileHover={{ x: 10 }} className="flex items-center">
                         • All Cricket Registrations are stopped and fixtures will be shared soon.

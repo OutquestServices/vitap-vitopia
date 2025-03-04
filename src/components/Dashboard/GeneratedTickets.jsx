@@ -87,12 +87,12 @@ const GeneratedTickets = ({ ticketData }) => {
                       <span className="font-semibold">{ticket.invoiceId}</span>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-4 text-black">
+                  {/* <div className="flex flex-wrap gap-4 text-black">
                     <div className="flex items-center gap-2">
                       <span className="text-gray-600">University/College Name:</span>
                       <span className="font-semibold">{ticket.universityName}</span>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="bg-white p-2 rounded-lg mx-auto sm:mx-0">
                   <QRCodeSVG value={ticket.qrValue} size={120} />

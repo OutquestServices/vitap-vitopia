@@ -164,31 +164,10 @@ const VerifyQR = () => {
                                     <strong>Name:</strong> {scannedData.name}
                                 </p>
                                 <p>
-                                    <strong>Email:</strong> {scannedData.email}
-                                </p>
-                                <p>
-                                    <strong>Event:</strong> {scannedData.event}
-                                </p>
-                                <p>
-                                    <strong>Amount:</strong> {scannedData.amount}
+                                    <strong>Purchase Item:</strong> {scannedData.event}
                                 </p>
                                 <p>
                                     <strong>Invoice ID:</strong> {scannedData.invoiceId}
-                                </p>
-                                <p>
-                                    <strong>Order ID:</strong> {scannedData.orderId}
-                                </p>
-                                <p>
-                                    <strong>Receipt ID:</strong> {scannedData.receiptId}
-                                </p>
-                                <p>
-                                    <strong>University:</strong> {scannedData.universityName}
-                                </p>
-                                <p>
-                                    <strong>Coach Mobile:</strong> {scannedData.coachMobile}
-                                </p>
-                                <p>
-                                    <strong>Coach Name:</strong> {scannedData.coachName}
                                 </p>
                                 <button
                                     className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"

@@ -12,19 +12,19 @@ function EventCard({ beach }) {
                     {beach.description ? beach.description : 'No description available'}
                 </p>
             </div>
-            <div className="px-6 pt-4 pb-2 relative flex flex-col">
+            {/* <div className="px-6 pt-4 pb-2 relative flex flex-col">
                 <span className='text-white'>
                     External Price: ₹ {beach.startPrice}
                 </span>
                 <span className='text-white float-right'>
                     Internal Price: ₹ {beach.endPrice}
                 </span>
-            </div>
+            </div> */}
             <div className="px-6 py-4 flex items-center justify-between">
                 <a className="bg-blue-600 hover:bg-blue-800 text-white text-center font-bold py-2 px-4 rounded w-[80%]" href={beach.link} target='_blank'>
-                    Register Now
+                    Registration
                 </a>
-                <a href={'https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/prime+Events/Vitopia+(Prime+Event+Rules)+2025+(1).pdf'}
+                <a href={'https://universitywebsitbucket.s3.ap-south-1.amazonaws.com/vitopia/Vitopia+(Prime+Event+Rules)_2025+.pdf'}
                     target='_blank'
                     className="transition ease-in duration-300 text-gray-500"
                     title="Rules and Regulations">

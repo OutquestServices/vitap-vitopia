@@ -61,9 +61,6 @@ export function Tshirts() {
                                 <p className="text-neutral-200 text-left mt-4">
                                     {tshirt.description}
                                 </p>
-                                <p className="text-neutral-200 text-left mt-4">
-                                    {tshirt.price}
-                                </p>
                                 <a
                                     href="https://events.vitap.ac.in/e/vitopia-2025-t-shirts-70ec62a9-cbad-4124-938f-e59a699f1727"
                                     target="_blank"

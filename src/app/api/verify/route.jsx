@@ -34,7 +34,7 @@ export async function GET(req) {
 
         const data = await prisma.registration.findUnique({
             where: {
-                receiptId: data_token_content.scannedData.receiptId,
+                invoiceId: data_token_content.scannedData.invoiceId,
             },
         });
 
@@ -47,17 +47,65 @@ export async function GET(req) {
             });
         }
 
-        await prisma.scanHistory.create({
-            data:{
-                invoiceId: data_token_content.scannedData.invoiceId,
+        const admin_user = await prisma.users.findUnique({
+            where: {
+                email: data_token_content.adminEmail,
+            },
+        });
+
+        if (!admin_user) {
+            return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
+                status: 401,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        }
+
+        if (data.regType !== "VITopia 2025 T-shirts" && data.regType !== "VITopia 2025 Cultural") {
+            return new NextResponse(JSON.stringify({ message: "Wrong QR" }), {
+                status: 401,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        }
+
+        const find_unique_tshirt = await prisma.tShirtSacn.findUnique({
+            where: {
+                invoiceId: data.invoiceId,
+            },
+        });
+
+
+        if (find_unique_tshirt) {
+            return new NextResponse(JSON.stringify({ message: "Already Verified" }), {
+                status: 200,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        }
+
+        await prisma.tShirtSacn.create({
+            data: {
+                invoiceId: data.invoiceId,
                 adminEmail: data_token_content.adminEmail,
-                userEmail: data_token_content.scannedData.email,
+                userEmail: data.email,
+            }
+        })
+
+        await prisma.scanHistory.create({
+            data: {
+                invoiceId: data.invoiceId,
+                adminEmail: data_token_content.adminEmail,
+                userEmail: data.email,
             }
         })
 
         await prisma.registration.update({
             where: {
-                receiptId: data_token_content.scannedData.receiptId,
+                invoiceId: data_token_content.scannedData.invoiceId,
             },
             data: {
                 scanned: true,

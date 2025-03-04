@@ -13,7 +13,57 @@ export default function UploadImage() {
     const [previewImage, setPreviewImage] = useState(null);
     const [statusMessage, setStatusMessage] = useState("");
 
-    const departments = ["Food", "Accomdation", "Transport", "Help Desk", "Registrations", "Discipline", "Documentation", "First Aid", "Design", "Technical"];
+    const departments = [
+        "Sponsorship Committee",
+        "Promotion and Publicity Committee (In Campus & Out Campus)",
+        "Accommodation (Sports and Cultural)",
+        "First Aid Committee (Sports and Cultural)",
+        "Prize and Certificate Distribution (Sports & Cultural)",
+        "Food Committee (Sports and Cultural)",
+        "Non-Prime Events (Outdoor games/fun activities)",
+        "Documentation Committee (Cultural)",
+        "Disciple Committee (Sports and Cultural)",
+        "Finance Committee (Sports and Cultural)",
+        "Website, App development, Email service, and Technical support committee",
+        "Food stall/ Other display stall committee",
+        "Help desk committee (Sports and Cultural)",
+        "Registration Committee (Sports and Cultural)",
+        "Social media Committee (Sports and Cultural)",
+        "Transport Committee (Sports and Cultural)",
+        "Pro Show Stage Committee",
+        "Non-prime and Other event stages/stalls",
+        "Souvenir preparation committee",
+        "Guest care committee",
+        "Purchase Committee",
+        "Technical Design Committee - Posters/ID card/Certificates",
+        "Cultural overall Incharge",
+        "Cultural Prime V- Step Up Dance Solo – Classic",
+        "Cultural Prime V- Step Up Dance Solo – Modern",
+        "Cultural Prime V- Step Up Dance Group – Classic",
+        "Cultural Prime V- Step Up Dance Group – Modern",
+        "Cultural Prime V- Rhythm Singing Solo – Classic",
+        "Cultural Prime V- Rhythm Singing Solo – Modern",
+        "Cultural Prime V- Rhythm Singing Group – Classic",
+        "Cultural Prime V- Rhythm Singing Group – Modern",
+        "Cultural Prime V- Battle of Bands Classical",
+        "Cultural Prime V- Battle of Bands Western",
+        "Cultural Prime -V-Glam Fashion Show Traditional",
+        "Cultural Prime -V-Glam Fashion Show Western",
+        "Cultural Prime - V Stand-up Comedy",
+        "Cultural Prime - Nukkad Natak Social Theme",
+        "Cultural Prime - State-Wise Rally",
+        "VGlam-Designers Sustainable Products",
+        "Sports Overall Incharge",
+        "Sports - Scrutiny Committee",
+        "Sports Officials/Umpires/Referees Committee",
+        "Sports Equipment and Ground Marking Committee",
+        "Sports – Fixtures and Decoration",
+        "Sports- Documentation",
+        "PR and Digital Media Committee",
+        "Decoration",
+        "Cultural- Programm Committee",
+        "Control Room"
+    ];
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;

@@ -39,7 +39,7 @@ export default function HeroSection() {
           March 8<sup>th</sup> & 9<sup>th</sup>, 2025
         </div>
         <button className="mt-10 bg-white text-black font-bold text-lg px-10 py-3 rounded-full shadow-xl">
-          Register Now
+          Registration
         </button>
       </div>
     </div>

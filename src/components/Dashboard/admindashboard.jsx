@@ -132,13 +132,13 @@ export default function AdminDashboard() {
             <FiList className="text-lg" />
           </motion.button>
         </Link>
-        <Link href="/dashboard/admin/scan">
+        <Link href="/dashboard/admin/scan/tshirts">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-md flex items-center justify-between w-full transition duration-300 ease-in-out"
           >
-            <span>Scan QR</span>
+            <span>Scan QR For T-Shirts</span>
             <FiSearch className="text-lg" />
           </motion.button>
         </Link>

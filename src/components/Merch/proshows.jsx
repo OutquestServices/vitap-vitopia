@@ -10,10 +10,7 @@ export function ProwShows() {
     const [hoveringIndex, setHoveringIndex] = useState(null);
 
     const tShirts = [
-        { src: "/merch/combo.jpg", title: "CULTURAL COMBO", description: "Internals (3 Days Combo + T-Shirt) Externals (3 Days Combo)", internal_price: "₹ 1500", external_price: "₹ 1800" },
-        { src: "/vitopia_const.png", title: "CULTURAL DAY 1", description: "Day 1 Culturals", internal_price: "₹ 400", external_price: "₹ 600" },
-        { src: "/vitopia_const.png", title: "CULTURAL DAY 2", description: "Day 2 Culturals", internal_price: "₹ 700", external_price: "₹ 800" },
-        { src: "/vitopia_const.png", title: "CULTURAL DAY 3", description: "Day 3 Culturals", internal_price: "₹ 700", external_price: "₹ 800" },
+        { src: "/vitopia_const.png", title: "Registration" },
     ];
 
     return (
@@ -50,24 +47,18 @@ export function ProwShows() {
                             }}
                             className="py-4 relative z-20"
                         >
-                            <h2 className="text-white text-2xl text-left font-bold">
+                            <h2 className="text-white text-lg text-left font-bold">
                                 {tShirts[0].title}
                             </h2>
                             <p className="text-neutral-200 text-left mt-4">
                                 {tShirts[0].description}
-                            </p>
-                            <p className="text-neutral-200 text-left mt-4">
-                                Internal Price: {tShirts[0].internal_price}
-                            </p>
-                            <p className="text-neutral-200 text-left mt-1">
-                                External Price: {tShirts[0].external_price}
                             </p>
                             <a
                                 href="https://events.vitap.ac.in/e/vitopia-2025-cultural-dd247f1d-90e2-4daa-8615-441050caf953"
                                 target="_blank"
                                 className="inline-block bg-blue-500 text-white text-left mt-4 px-6 py-2 rounded hover:bg-blue-600 transition-colors"
                             >
-                                Register Now
+                                Registration
                             </a>
                         </motion.div>
                     </div>
@@ -108,24 +99,18 @@ export function ProwShows() {
                                 }}
                                 className="py-4 relative z-20"
                             >
-                                <h2 className="text-white text-2xl text-left font-bold">
+                                <h2 className="text-white text-lg text-left font-bold">
                                     {tshirt.title}
                                 </h2>
                                 <p className="text-neutral-200 text-left mt-4">
                                     {tshirt.description}
-                                </p>
-                                <p className="text-neutral-200 text-left mt-4">
-                                    Internal Price: {tshirt.internal_price}
-                                </p>
-                                <p className="text-neutral-200 text-left mt-1">
-                                    External Price: {tshirt.external_price}
                                 </p>
                                 <a
                                     href="https://events.vitap.ac.in/e/vitopia-2025-cultural-dd247f1d-90e2-4daa-8615-441050caf953"
                                     target="_blank"
                                     className="inline-block bg-blue-500 text-white text-left mt-4 px-6 py-2 rounded hover:bg-blue-600 transition-colors"
                                 >
-                                    Register Now
+                                    Registration
                                 </a>
                             </motion.div>
                         </div>

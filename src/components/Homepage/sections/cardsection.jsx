@@ -3,16 +3,16 @@ import { MeteorCard } from "../meteorcard";
 export default function CardSection() {
   const data = [
     {
-      name: "ARMAAN MALIK",
-      role: "Indian Singer",
-      day: "Day 3",
-      image: "/lineup/armaan_malik.avif",
-    },
-    {
       name: "Karthik",
       role: "Singer",
       day: "Day 2",
       image: "/lineup/karthik1.avif",
+    },
+    {
+      name: "ARMAAN MALIK",
+      role: "Indian Singer",
+      day: "Day 3",
+      image: "/lineup/armaan_malik.avif",
     },
     {
       name: "Shalmali Kholgade",
@@ -35,7 +35,7 @@ export default function CardSection() {
     {
       name: "DJ PAROMA",
       role: "Musical Artist",
-      day: "Day 2",
+      day: "Day 1",
       image: "/lineup/paroma.jpg",
     },
     {
@@ -65,7 +65,7 @@ export default function CardSection() {
     {
       name: "DJ YESH",
       role: "Musical artist",
-      day: "Day 1",
+      day: "Day 2",
       image: "/lineup/yesh.jpg",
     },
   ];
