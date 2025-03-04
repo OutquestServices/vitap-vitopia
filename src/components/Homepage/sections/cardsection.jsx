@@ -39,6 +39,12 @@ export default function CardSection() {
       image: "/lineup/paroma.jpg",
     },
     {
+      name: "Abishek Kumar",
+      role: "Standup Comedian",
+      day: "Day 3",
+      image: "/lineup/standup.png",
+    },
+    {
       name: "DJ NYK",
       role: "Musical artist",
       day: "Day 3",
