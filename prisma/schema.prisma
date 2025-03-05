@@ -120,3 +120,8 @@ model TShirtSacn {
   invoiceId  String   @unique
   createdAt  DateTime @default(now())
 }
+
+model issueTshirts {
+  id    Int    @id @default(autoincrement())
+  email String
+}

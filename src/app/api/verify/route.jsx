@@ -38,6 +38,21 @@ export async function GET(req) {
             },
         });
 
+        const issue_tshirts = await prisma.issueTshirts.findMany({
+            where: {
+                email: data.email,
+            },
+        });
+
+        if (issue_tshirts.length === 0) {
+            return new NextResponse(JSON.stringify({ message: "Tshirt Will not be issued Today" }), {
+                status: 401,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        }
+
         if (data.scanned === true) {
             return new NextResponse(JSON.stringify({ message: "Already Verified" }), {
                 status: 200,
