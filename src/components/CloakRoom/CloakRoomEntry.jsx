@@ -2,7 +2,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FiUpload } from "react-icons/fi";
-import QRCode from "qrcode.react";
+import { QRCodeSVG } from "qrcode.react";
+import { useSession } from "next-auth/react";
+
 
 export default function CloakRoomDetails() {
   const [name, setName] = useState("");
@@ -11,12 +13,12 @@ export default function CloakRoomDetails() {
   const [qrToken, setQrToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { data: session } = useSession();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    // Generate a unique token using the browser's crypto API, fallback to random string if unavailable.
     const token = crypto.randomUUID
       ? crypto.randomUUID()
       : Math.random().toString(36).substr(2, 9);
@@ -27,7 +29,7 @@ export default function CloakRoomDetails() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, phone, bags, token }),
+        body: JSON.stringify({ name, phone, bags, token, email: session?.user?.email }),
       });
 
       if (!res.ok) {
@@ -52,7 +54,9 @@ export default function CloakRoomDetails() {
         <h1 className="text-4xl font-bold text-white mb-8">
           QR Code Generated
         </h1>
-        <QRCode value={qrToken} size={256} />
+        <div className="bg-white p-2 rounded-lg mx-auto sm:mx-0">
+          <QRCodeSVG value={qrToken} size={256} />
+        </div>
         <p className="text-white mt-4">Token: {qrToken}</p>
       </motion.div>
     );
