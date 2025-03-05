@@ -1,41 +1,62 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 import { FiUpload } from "react-icons/fi";
-import { QRCodeSVG } from "qrcode.react";
-import { useSession } from "next-auth/react";
-
+import { QRCodeCanvas } from "qrcode.react";
 
 export default function CloakRoomDetails() {
+  const { data: session, status } = useSession();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [bags, setBags] = useState("");
   const [qrToken, setQrToken] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { data: session } = useSession();
+
+  // Check if the user already has a generated cloak room token
+  useEffect(() => {
+    if (status === "authenticated" && session?.user?.email) {
+      fetch("/api/cloakroom/get-token")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.token) {
+            setQrToken(data.token);
+          }
+        })
+        .catch((err) => {
+          console.error("Error fetching token", err);
+        });
+    }
+  }, [status, session]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    // Generate a unique token using the crypto API (with fallback)
     const token = crypto.randomUUID
       ? crypto.randomUUID()
       : Math.random().toString(36).substr(2, 9);
-
     try {
+      // Post cloak room details along with the token and user's email
       const res = await fetch("/api/cloakroom", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, phone, bags, token, email: session?.user?.email }),
+        body: JSON.stringify({
+          name,
+          phone,
+          bags,
+          token,
+          email: session.user.email,
+        }),
       });
-
       if (!res.ok) {
         throw new Error("Failed to save data");
       }
-
       setQrToken(token);
     } catch (err) {
       setError("Error generating QR. Please try again.");
@@ -43,6 +64,23 @@ export default function CloakRoomDetails() {
     setLoading(false);
   };
 
+  if (status === "loading") {
+    return (
+      <motion.div className="flex items-center justify-center min-h-screen bg-black">
+        <div className="text-white">Loading...</div>
+      </motion.div>
+    );
+  }
+
+  if (!session) {
+    return (
+      <motion.div className="flex items-center justify-center min-h-screen bg-black">
+        <div className="text-white">Access Denied. Please log in.</div>
+      </motion.div>
+    );
+  }
+
+  // If a token already exists, display the QR code
   if (qrToken) {
     return (
       <motion.div
@@ -54,14 +92,14 @@ export default function CloakRoomDetails() {
         <h1 className="text-4xl font-bold text-white mb-8">
           QR Code Generated
         </h1>
-        <div className="bg-white p-2 rounded-lg mx-auto sm:mx-0">
-          <QRCodeSVG value={qrToken} size={256} />
-        </div>
+        <QRCodeCanvas value={qrToken} size={256} />
+
         <p className="text-white mt-4">Token: {qrToken}</p>
       </motion.div>
     );
   }
 
+  // Otherwise, show the form for entering cloak room details
   return (
     <motion.div
       initial={{ opacity: 0 }}

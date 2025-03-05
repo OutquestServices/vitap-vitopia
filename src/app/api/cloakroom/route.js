@@ -1,9 +1,9 @@
-"use server";
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
 export async function POST(request) {
   const prisma = new PrismaClient();
+
   try {
     const body = await request.json();
     const { name, phone, bags, token, email } = body;
@@ -15,7 +15,7 @@ export async function POST(request) {
       );
     }
 
-    const newCloakRoomEntry = await prisma.cloakRoom.create({
+    const newEntry = await prisma.cloakRoom.create({
       data: {
         email,
         phno: phone,
@@ -26,7 +26,7 @@ export async function POST(request) {
     });
 
     return NextResponse.json(
-      { message: "Cloak room details saved", data: newCloakRoomEntry },
+      { message: "Cloak room details saved", data: newEntry },
       { status: 200 },
     );
   } catch (error) {
