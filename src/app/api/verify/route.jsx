@@ -94,7 +94,7 @@ export async function GET(req) {
 
 
         if (find_unique_tshirt) {
-            return new NextResponse(JSON.stringify({ message: "Already Verified" }), {
+            return new NextResponse(JSON.stringify({ message: "Invalid QR" }), {
                 status: 200,
                 headers: {
                     "Content-Type": "application/json",
