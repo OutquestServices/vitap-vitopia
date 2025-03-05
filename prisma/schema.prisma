@@ -125,3 +125,14 @@ model issueTshirts {
   id    Int    @id @default(autoincrement())
   email String
 }
+model CloakRoom {
+  id        Int      @id @default(autoincrement())
+  email     String
+  phno      String
+  name      String
+  noOfBags  Int
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+

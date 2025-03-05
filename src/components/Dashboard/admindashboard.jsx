@@ -3,7 +3,13 @@
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FiUpload, FiSearch, FiClock, FiAlertCircle, FiList } from "react-icons/fi";
+import {
+  FiUpload,
+  FiSearch,
+  FiClock,
+  FiAlertCircle,
+  FiList,
+} from "react-icons/fi";
 
 export default function AdminDashboard() {
   const { data: session, status } = useSession();
@@ -37,9 +43,7 @@ export default function AdminDashboard() {
           You are not authenticated. Please sign in.
         </p>
         <button
-          onClick={() =>
-            signIn("google", { callbackUrl: "/auth/role-bridge" })
-          }
+          onClick={() => signIn("google", { callbackUrl: "/auth/role-bridge" })}
           className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
         >
           Sign In
@@ -85,10 +89,17 @@ export default function AdminDashboard() {
       >
         <h2 className="text-lg font-semibold text-white mb-4">
           <span className="block">
-            Name: <span className="text-gray-300">{session?.user?.name?.split(' ')[0]} {session?.user?.name?.split(' ')[1]}</span>
+            Name:{" "}
+            <span className="text-gray-300">
+              {session?.user?.name?.split(" ")[0]}{" "}
+              {session?.user?.name?.split(" ")[1]}
+            </span>
           </span>
           <span className="block">
-            Reg No: <span className="text-gray-300">{session?.user?.name?.split(' ')[2]}</span>
+            Reg No:{" "}
+            <span className="text-gray-300">
+              {session?.user?.name?.split(" ")[2]}
+            </span>
           </span>
           <span className="block mt-2">
             Event: <span className="text-gray-300">{session?.user?.club}</span>
@@ -143,6 +154,16 @@ export default function AdminDashboard() {
           </motion.button>
         </Link>
         <Link href="/dashboard/admin/history">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-md flex items-center justify-between w-full transition duration-300 ease-in-out"
+          >
+            <span>Scan History</span>
+            <FiClock className="text-lg" />
+          </motion.button>
+        </Link>
+        <Link href="/dashboard/admin/cloakroom">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
