@@ -6,7 +6,7 @@ import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
 
-const VerifyQR = () => {
+const VerifyQR1 = () => {
     const [popup, setPopup] = useState(false);
     const [scannedData, setScannedData] = useState(null);
     const [message, setMessage] = useState("");
@@ -77,8 +77,7 @@ const VerifyQR = () => {
         if (data) {
             try {
                 setMessageType(null);
-                const parsedData = JSON.parse(data);
-                setScannedData(parsedData);
+                setScannedData(data);
                 setPopup(true);
             } catch (error) {
                 console.error("Error parsing QR data:", error);
@@ -107,7 +106,7 @@ const VerifyQR = () => {
             setMessage("");
 
             const generated_token = generateToken({ scannedData, adminEmail: session.user?.email }, 60 * 60 * 24 * 30);
-            const response = await fetch("/api/verify", {
+            const response = await fetch("/api/verify/cloakroom", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -117,7 +116,7 @@ const VerifyQR = () => {
             });
 
             const result = await response.json();
-            if (result.message === "Verified Successfully") {
+            if (result.message === "Returned Successfully") {
                 setMessageType("success");
                 setMessage(result.message);
             } else {
@@ -144,8 +143,8 @@ const VerifyQR = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.3 }}
                         className={`p-6 ${messageType === "success"
-                            ? "bg-green-500 text-white"
-                            : messageType === null ? "bg-gradient-to-r from-blue-700 to-blue-500" : "bg-red-500 text-white"
+                                ? "bg-green-500 text-white"
+                                : messageType === null ? "bg-gradient-to-r from-blue-700 to-blue-500" : "bg-red-500 text-white"
                             } text-white shadow-xl rounded-lg max-w-md w-full relative flex flex-col items-center`}
                     >
                         <IoMdClose
@@ -155,22 +154,19 @@ const VerifyQR = () => {
                         />
                         {scannedData ? (
                             <div className="text-center">
-                                <h2 className="text-2xl font-bold mb-3">Verify Pass</h2>
-                                <p className="text-lg">
-                                    <span className="font-bold">Event:</span> {scannedData.event}
-                                </p>
+                                <h2 className="text-2xl font-bold mb-3">Cloak Room</h2>
                                 <button
                                     className="mt-4 px-6 py-2 bg-white text-blue-700 font-bold rounded-lg hover:bg-gray-200 transition-all"
                                     onClick={handleSubmit}
                                 >
-                                    Verify Ticket
+                                    Return Items
                                 </button>
                             </div>
                         ) : (
                             <div
                                 className={`mt-4 px-6 py-3 text-center font-bold text-4xl rounded-lg ${messageType === "success"
-                                    ? "bg-green-500 text-white"
-                                    : "bg-red-500 text-white"
+                                        ? "bg-green-500 text-white"
+                                        : "bg-red-500 text-white"
                                     }`}
                             >
                                 {message}
@@ -182,7 +178,7 @@ const VerifyQR = () => {
 
             <div className="h-full w-full flex flex-col items-center justify-center bg-black min-h-screen">
                 <main className="text-center text-white">
-                    <h1 className="text-3xl font-bold mb-4">Ticket Verification</h1>
+                    <h1 className="text-3xl font-bold mb-4">Cloak Room Return</h1>
                     <QrReader
                         delay={300}
                         facingMode="environment"
@@ -204,4 +200,4 @@ const VerifyQR = () => {
     );
 };
 
-export default VerifyQR;
+export default VerifyQR1;

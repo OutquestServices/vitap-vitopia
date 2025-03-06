@@ -32,43 +32,14 @@ export async function GET(req) {
 
         const data_token_content = extractDataFromToken(data_token);
 
-        const data = await prisma.registration.findUnique({
-            where: {
-                invoiceId: data_token_content.scannedData.invoiceId,
-            },
-        });
 
-        // const issue_tshirts = await prisma.issueTshirts.findMany({
-        //     where: {
-        //         email: data.email,
-        //     },
-        // });
-
-        // if (issue_tshirts.length === 0) {
-        //     return new NextResponse(JSON.stringify({ message: "Tshirt Will not be issued Today" }), {
-        //         status: 401,
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //     });
-        // }
-
-        if (data.scanned === true) {
-            return new NextResponse(JSON.stringify({ message: "Invalid QR" }), {
-                status: 200,
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-        }
-
-        const admin_user = await prisma.users.findUnique({
+        const is_admin = await prisma.users.findUnique({
             where: {
                 email: data_token_content.adminEmail,
-            },
-        });
+            }
+        })
 
-        if (!admin_user) {
+        if (!is_admin) {
             return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
                 status: 401,
                 headers: {
@@ -77,57 +48,58 @@ export async function GET(req) {
             });
         }
 
-        if (data.regType !== "VITopia 2025 T-shirts" && data.regType !== "VITopia 2025 Cultural") {
-            return new NextResponse(JSON.stringify({ message: "Wrong QR" }), {
-                status: 401,
+        if (is_admin.scan !== "all" && is_admin.scan !== "cloakroom") {
+            return new NextResponse(JSON.stringify({ message: "No Access To Scan This QR" }), {
+                status: 400,
                 headers: {
                     "Content-Type": "application/json",
                 },
             });
         }
 
-        const find_unique_tshirt = await prisma.tShirtSacn.findUnique({
+        const cloakroom_user = await prisma.cloakRoom.findUnique({
             where: {
-                invoiceId: data.invoiceId,
-            },
-        });
+                token: data_token_content.scannedData,
+            }
+        })
 
-
-        if (find_unique_tshirt) {
-            return new NextResponse(JSON.stringify({ message: "Invalid QR" }), {
-                status: 200,
+        if (!cloakroom_user) {
+            return new NextResponse(JSON.stringify({ message: "No Items Found" }), {
+                status: 400,
                 headers: {
                     "Content-Type": "application/json",
                 },
             });
         }
 
-        await prisma.tShirtSacn.create({
-            data: {
-                invoiceId: data.invoiceId,
-                adminEmail: data_token_content.adminEmail,
-                userEmail: data.email,
-            }
-        })
+        if (cloakroom_user.isReturned === true) {
+            return new NextResponse(JSON.stringify({ message: "Already Returned" }), {
+                status: 400,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        }
 
-        await prisma.scanHistory.create({
-            data: {
-                invoiceId: data.invoiceId,
-                adminEmail: data_token_content.adminEmail,
-                userEmail: data.email,
-            }
-        })
-
-        await prisma.registration.update({
+        await prisma.cloakRoom.update({
             where: {
-                invoiceId: data_token_content.scannedData.invoiceId,
+                token: data_token_content.scannedData,
+            }, data: {
+                isReturned: true,
+            }
+        })
+
+        await prisma.availableCloakRoom.update({
+            where: {
+                room: cloakroom_user.room,
+                locker: cloakroom_user.locker
             },
             data: {
-                scanned: true,
-            },
-        });
+                available: true,
+            }
+        })
 
-        return new NextResponse(JSON.stringify({ message: "Verified Successfully", data }), {
+        return new NextResponse(JSON.stringify({ message: "Returned Successfully" }), {
             status: 200,
             headers: {
                 "Content-Type": "application/json",

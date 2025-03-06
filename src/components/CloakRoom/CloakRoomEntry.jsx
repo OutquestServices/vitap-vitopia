@@ -12,12 +12,12 @@ export default function CloakRoomDetails() {
   const [phone, setPhone] = useState("");
   const [bags, setBags] = useState("");
   const [qrToken, setQrToken] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Check if the user already has a generated cloak room token
   useEffect(() => {
     if (status === "authenticated" && session?.user?.email) {
+      setLoading(true); // Start loading
       fetch("/api/cloakroom/get-token")
         .then((res) => res.json())
         .then((data) => {
@@ -27,7 +27,10 @@ export default function CloakRoomDetails() {
         })
         .catch((err) => {
           console.error("Error fetching token", err);
-        });
+        })
+        .finally(() => setLoading(false)); // Stop loading after request
+    } else {
+      setLoading(false); // Stop loading if user is not authenticated
     }
   }, [status, session]);
 
@@ -35,12 +38,10 @@ export default function CloakRoomDetails() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    // Generate a unique token using the crypto API (with fallback)
     const token = crypto.randomUUID
       ? crypto.randomUUID()
       : Math.random().toString(36).substr(2, 9);
     try {
-      // Post cloak room details along with the token and user's email
       const res = await fetch("/api/cloakroom", {
         method: "POST",
         headers: {
@@ -64,10 +65,10 @@ export default function CloakRoomDetails() {
     setLoading(false);
   };
 
-  if (status === "loading") {
+  if (status === "loading" || loading) {
     return (
       <motion.div className="flex items-center justify-center min-h-screen bg-black">
-        <div className="text-white">Loading...</div>
+        <div className="text-white text-lg animate-pulse">Loading...</div>
       </motion.div>
     );
   }
@@ -80,7 +81,6 @@ export default function CloakRoomDetails() {
     );
   }
 
-  // If a token already exists, display the QR code
   if (qrToken) {
     return (
       <motion.div
@@ -93,13 +93,11 @@ export default function CloakRoomDetails() {
           QR Code Generated
         </h1>
         <QRCodeCanvas value={qrToken} size={256} />
-
         <p className="text-white mt-4">Token: {qrToken}</p>
       </motion.div>
     );
   }
 
-  // Otherwise, show the form for entering cloak room details
   return (
     <motion.div
       initial={{ opacity: 0 }}

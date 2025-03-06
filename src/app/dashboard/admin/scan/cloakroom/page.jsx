@@ -1,13 +1,13 @@
-import MainUserDashboard from "@/components/Dashboard/mainUserDashboard";
+import VerifyQR1 from "@/components/Dashboard/verifyQr1";
 import { Footer } from "@/components/Homepage/sections/footer";
 import Navbar from "@/components/Homepage/sections/navbar";
 
 export default function Page() {
     return (
-        <div className="min-h-screen">
+        <div className="bg-black">
             <Navbar />
-            <MainUserDashboard />
+            <VerifyQR1 />
             <Footer />
         </div>
-    )
+    );
 }
