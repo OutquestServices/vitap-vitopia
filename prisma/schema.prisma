@@ -134,7 +134,7 @@ model CloakRoom {
   locker      String
   invoiceId   String   @unique
   isReturned  Boolean  @default(false)
-  cloakRoomId Int      
+  cloakRoomId Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

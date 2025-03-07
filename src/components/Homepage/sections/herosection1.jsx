@@ -84,7 +84,7 @@ export default function HeroSection1() {
                     <a href="/culturals" target="_blank" className="testFont border-2 text-white font-semibold text-sm md:font-semibold md:text-lg px-2 py-1 md:px-10 md:py-3 shadow-lg">
                         Cultural Prime
                     </a>
-                    <a href="#" target="_blank" className="testFont border-2 text-white font-semibold text-sm md:font-semibold md:text-lg px-5 py-1 md:px-10 md:py-3 shadow-lg">
+                    <a href="https://events.vitap.ac.in/e/vitopia-2025-non-prime-events-9e7ac9eb-1e0c-46da-95c0-ab8e19b64ba6" target="_blank" className="testFont border-2 text-white font-semibold text-sm md:font-semibold md:text-lg px-5 py-1 md:px-10 md:py-3 shadow-lg">
                         Cultural Non Prime
                     </a>
                 </div>
