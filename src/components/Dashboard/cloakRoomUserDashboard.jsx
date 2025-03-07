@@ -1,18 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import GeneratedTickets1 from "@/components/Dashboard/GeneratedTickets1";
 import { generateToken } from "@/lib/jwttoken";
-import { useSession, signIn } from "next-auth/react"; // Note: Import signIn
+import { useSession, signIn } from "next-auth/react"; 
 import { motion } from "framer-motion";
-import Link from "next/link"; // Import Link
+import Link from "next/link"; 
 
 export default function CloakRoomUserDashboard() {
     const [ticketData, setTicketData] = useState([]);
     const { data: session, status } = useSession();
     const [loading, setLoading] = useState(true);
 
-    // Always call useEffect; conditionally fetch data if session exists
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -27,37 +25,30 @@ export default function CloakRoomUserDashboard() {
                 });
 
                 if (!response.ok) {
-                    throw new Error("Error fetching passes. Please refresh the page.");
+                    throw new Error("Error fetching locker details. Please refresh the page.");
                 }
 
                 const apiResponse = await response.json();
-
-                console.log(apiResponse);
-                // Extract passes from the `data` property or use an empty array if not found
                 const passesData = apiResponse.data || [];
 
-                // Transform each pass to match the expected structure.
                 const transformedPasses = passesData.map((pass) => ({
-                    name: pass.name,
                     room: pass.room,
                     locker: pass.locker,
-                    qrValue: pass.token,
                 }));
 
                 setTicketData(transformedPasses);
                 setLoading(false);
             } catch (error) {
-                console.error("Error fetching passes:", error);
+                console.error("Error fetching locker details:", error);
+                setLoading(false);
             }
         };
 
-        // Only fetch data if a session exists.
         if (session) {
             fetchData();
         }
-    }, [session, setLoading]);
+    }, [session]);
 
-    // Now conditionally render based on the session status
     if (status === "loading" || loading) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-black">
@@ -66,7 +57,7 @@ export default function CloakRoomUserDashboard() {
                     animate={{ rotate: 360 }}
                     transition={{
                         duration: 1,
-                        repeat: Number.POSITIVE_INFINITY,
+                        repeat: Infinity,
                         ease: "linear",
                     }}
                 ></motion.div>
@@ -83,13 +74,9 @@ export default function CloakRoomUserDashboard() {
                 className="bg-black min-h-screen flex flex-col items-center justify-center gap-10 p-4"
             >
                 <h1 className="text-4xl font-bold text-white mb-4">Access Denied</h1>
-                <p className="text-xl text-gray-300">
-                    You are not authenticated. Please sign in.
-                </p>
+                <p className="text-xl text-gray-300">You are not authenticated. Please sign in.</p>
                 <button
-                    onClick={() =>
-                        signIn("google", { callbackUrl: "/auth/role-bridge" })
-                    }
+                    onClick={() => signIn("google", { callbackUrl: "/auth/role-bridge" })}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
                 >
                     Sign In
@@ -107,9 +94,7 @@ export default function CloakRoomUserDashboard() {
                 className="bg-black min-h-screen flex flex-col items-center justify-center gap-10 p-4"
             >
                 <h1 className="text-4xl font-bold text-white mb-4">Unauthorized</h1>
-                <p className="text-xl text-gray-300">
-                    You are not authorized to view this page.
-                </p>
+                <p className="text-xl text-gray-300">You are not authorized to view this page.</p>
                 <Link
                     href="/"
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
@@ -121,10 +106,21 @@ export default function CloakRoomUserDashboard() {
     }
 
     return (
-        <div className="relative min-h-screen flex flex-col items-center justify-center bg-black">
+        <div className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white p-4">
             {ticketData.length > 0 ? (
-                <div className="my-8">
-                    <GeneratedTickets1 ticketData={ticketData} />
+                <div className="my-8 w-full max-w-md">
+                    <h2 className="text-3xl font-bold text-center mb-6">Locker Details</h2>
+                    <ul className="space-y-4">
+                        {ticketData.map((ticket, index) => (
+                            <li
+                                key={index}
+                                className="p-4 bg-gray-800 rounded-lg shadow-lg text-center"
+                            >
+                                <p className="text-lg font-semibold">Room: {ticket.room}</p>
+                                <p className="text-lg">Locker: {ticket.locker}</p>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             ) : (
                 <motion.div
@@ -133,42 +129,8 @@ export default function CloakRoomUserDashboard() {
                     transition={{ duration: 0.6 }}
                     className="flex flex-col items-center"
                 >
-                    {/* Creative SVG illustration */}
-                    <motion.svg
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 0.6 }}
-                        className="w-24 h-24 text-gray-500 mb-4"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 17v-6a3 3 0 016 0v6m-6 0h6"
-                        />
-                    </motion.svg>
-
-                    <motion.h2
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-2xl font-bold text-white"
-                    >
-                        Oops! No Items in Cloak Room
-                    </motion.h2>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.5 }}
-                        className="mt-2 text-gray-400 text-center max-w-md"
-                    >
-                        It looks no items in Cloak Room.
-                    </motion.p>
+                    <h2 className="text-2xl font-bold">No Items in Cloak Room</h2>
+                    <p className="mt-2 text-gray-400">There are no locker details available.</p>
                 </motion.div>
             )}
         </div>

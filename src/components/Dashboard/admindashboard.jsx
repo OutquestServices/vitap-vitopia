@@ -179,7 +179,7 @@ export default function AdminDashboard() {
             whileTap={{ scale: 0.95 }}
             className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-md flex items-center justify-between w-full transition duration-300 ease-in-out"
           >
-            <span>Scan QR For Cloak Room</span>
+            <span>Cloak Room Return</span>
             <FiSearch className="text-lg" />
           </motion.button>
         </Link>

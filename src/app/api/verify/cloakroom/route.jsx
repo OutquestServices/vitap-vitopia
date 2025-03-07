@@ -57,9 +57,11 @@ export async function GET(req) {
             });
         }
 
+        const scannedData = JSON.parse(data_token_content.scannedData);
+
         const cloakroom_user = await prisma.cloakRoom.findUnique({
             where: {
-                token: data_token_content.scannedData,
+                invoiceId: scannedData.invoiceId,
             }
         })
 
@@ -83,7 +85,7 @@ export async function GET(req) {
 
         await prisma.cloakRoom.update({
             where: {
-                token: data_token_content.scannedData,
+                invoiceId: scannedData.invoiceId,
             }, data: {
                 isReturned: true,
             }
@@ -91,6 +93,7 @@ export async function GET(req) {
 
         await prisma.availableCloakRoom.update({
             where: {
+                id: cloakroom_user.cloakRoomId,
                 room: cloakroom_user.room,
                 locker: cloakroom_user.locker
             },

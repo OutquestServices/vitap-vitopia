@@ -100,7 +100,7 @@ export default function MainUserDashboard() {
                         whileTap={{ scale: 0.95 }}
                         className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-md flex items-center justify-between w-full transition duration-300 ease-in-out"
                     >
-                        <span>Cloak Room Passes</span>
+                        <span>Issued Cloak Room</span>
                     </motion.button>
                 </Link>
             </div>

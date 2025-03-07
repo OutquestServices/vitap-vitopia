@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
+import { extractDataFromToken } from "@/lib/jwttoken";
 
 export async function POST(request) {
   const prisma = new PrismaClient();
 
   try {
-    const body = await request.json();
-    const { name, phone, token, email, adminEmail } = body;
     const auth_token = request.headers.get("Authorization");
+    const data_token = request.headers.get("Token");
 
     if (!auth_token) {
       return NextResponse.json({ message: "Authorization header is missing" }, { status: 401 });
@@ -23,39 +23,29 @@ export async function POST(request) {
       return NextResponse.json({ message: "Invalid Authorization header format" }, { status: 401 });
     }
 
+    const data_token_parts = extractDataFromToken(data_token);
+
     const is_admin = await prisma.users.findUnique({
-      where: { email: adminEmail },
+      where: { email: data_token_parts.adminEmail },
     });
 
     if (!is_admin) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    if (!name || !phone || !token || !email) {
-      return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
-    }
 
-    // Step 1: Find the room with the most available lockers
-    const leastOccupiedRoom = await prisma.availableCloakRoom.groupBy({
-      by: ["room"],
-      _count: { id: true },
-      where: { available: true },
-      orderBy: { _count: { id: "desc" } }, // Sort by highest available lockers
-      take: 1,
+    const scannedData = JSON.parse(data_token_parts.scannedData);
+
+    const user = await prisma.registration.findUnique({
+      where: { invoiceId: scannedData.invoiceId }
     });
 
-    if (!leastOccupiedRoom.length) {
-      return NextResponse.json({ message: "No available lockers" }, { status: 400 });
-    }
-
-    const assignedRoom = leastOccupiedRoom[0].room;
-
-    // Step 2: Find the lowest available locker in that room
     const availableLocker = await prisma.availableCloakRoom.findFirst({
-      where: { room: assignedRoom, available: true },
-      orderBy: { locker: "asc" }, // Get the smallest available locker number
+      where: { room: is_admin.event, available: true },
+      orderBy: { locker: "asc" }, // Assign the smallest available locker
     });
 
+    
     if (!availableLocker) {
       return NextResponse.json({ message: "No available lockers in this room" }, { status: 400 });
     }
@@ -69,11 +59,10 @@ export async function POST(request) {
     // Step 4: Save the user details along with assigned room & locker
     const newEntry = await prisma.cloakRoom.create({
       data: {
-        email,
-        phno: phone,
-        name,
-        token,
-        room: assignedRoom,
+        email: user.email,
+        name: user.name,
+        invoiceId: user.invoiceId,
+        room: availableLocker.room,
         locker: availableLocker.locker,
       },
     });
